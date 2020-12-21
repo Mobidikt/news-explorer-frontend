@@ -1,0 +1,12 @@
+.about {
+  min-height: 624px;
+  display: flex;
+}
+.about__image {
+  height: 464px;
+  width: 464px;
+  border-radius: 50%;
+}
+.about__title {
+  font-size: 40px;
+}
