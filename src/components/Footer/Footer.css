@@ -1,0 +1,38 @@
+.footer {
+  padding: 32px 106px 26px;
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+.footer__copyright {
+  font-family: Roboto;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: #b6bcbf;
+}
+.footer__info {
+  display: flex;
+}
+.footer__link {
+  text-decoration: none;
+  color: #1a1b22;
+  margin-right: 40px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+}
+.footer__link_git {
+  display: block;
+  height: 20px;
+  width: 20px;
+  background-image: url(../../images/icon_git.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,24 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
+import './Footer.css';
 
 function Footer() {
   return (
-    <footer className='footer'>
-      <p className='footer__copyright'>
-        &copy; 2020 Supersite, Powered by News API
-      </p>
-      <div className='footer__info'>
-        {/* <Link className='link' to='/'>
-            Главная
-          </Link>
-        <Link className='link' to='https://praktikum.yandex.ru/'>
-          Яндекс.Практикум
-        </Link>
-
-        <Link className='link' to='https://github.com/Mobidikt'></Link> */}
-        {/* <Link className='link' to='#'></Link> */}
-      </div>
-    </footer>
+    <Switch>
+      <Route path='/404' exact />
+      <Route path='*'>
+        <footer className='footer'>
+          <p className='footer__copyright'>
+            &copy; 2020 Supersite, Powered by News API
+          </p>
+          <div className='footer__info'>
+            <Link className='footer__link' to='/'>
+              Главная
+            </Link>
+            <a className='footer__link' href='https://praktikum.yandex.ru/'>
+              Яндекс.Практикум
+            </a>
+            <a
+              className='footer__link footer__link_git'
+              href='https://github.com/Mobidikt'
+            ></a>
+          </div>
+        </footer>
+      </Route>
+    </Switch>
   );
 }
 export default Footer;
