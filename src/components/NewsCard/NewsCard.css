@@ -1,8 +1,9 @@
 .card {
   height: 576px;
-  max-width: 400px;
+  width: 400px;
   overflow: hidden;
   border-radius: 10px;
+  background-color: tomato;
 }
 
 .card__image {

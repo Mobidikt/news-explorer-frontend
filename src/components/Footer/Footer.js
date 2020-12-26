@@ -8,7 +8,7 @@ function Footer() {
       <Route path='/404' exact />
       <Route path='*'>
         <footer className='footer'>
-          <div className='footer_container'>
+          <div className='footer__container'>
             <p className='footer__copyright'>
               &copy; 2020 Supersite, Powered by News API
             </p>

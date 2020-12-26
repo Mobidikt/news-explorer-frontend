@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import { ROUTES_MAP } from '../../utils/routesMap';
+// import { ROUTES_MAP } from '../../utils/routesMap';
 import Navigation from '../Navigation/Navigation.js';
 import './Header.css';
 
-function Header() {
+function Header({ openInfoTooltip, openPopupLogin }) {
   return (
     <Switch>
       <Route path='/404' exact />
@@ -17,13 +17,17 @@ function Header() {
             <Route path='/' exact>
               <div className='header__menu'>
                 <Navigation />
-                <button className='header__button'>Авторизоваться</button>
+                <button className='header__button' onClick={openInfoTooltip}>
+                  Авторизоваться
+                </button>
               </div>
             </Route>
             <Route path='/saved-news'>
               <div className='header__menu'>
                 <Navigation />
-                <button className='header__button'>Авторизоваться</button>
+                <button className='header__button' onClick={openInfoTooltip}>
+                  Авторизоваться
+                </button>
               </div>
             </Route>
           </div>

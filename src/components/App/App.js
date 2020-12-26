@@ -11,6 +11,7 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 
 function App() {
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
+  const [popupLoginOpen, setPopupLoginOpen] = useState(false);
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
@@ -25,6 +26,14 @@ function App() {
     document.addEventListener('keydown', handleEsc);
     document.addEventListener('click', overlayClose);
   };
+  const openInfoTooltip = () => {
+    setInfoTooltipOpen(true);
+    setEventListeners();
+  };
+  const openPopupLogin = () => {
+    // setPopupLoginOpen(true);
+    setEventListeners();
+  };
   const closeAllPopups = () => {
     setInfoTooltipOpen(false);
     document.removeEventListener('keydown', handleEsc);
@@ -32,7 +41,10 @@ function App() {
   };
   return (
     <div className='App'>
-      <Header />
+      <Header
+        openInfoTooltip={openInfoTooltip}
+        openPopupLogin={openPopupLogin}
+      />
       <SearchForm />
       <NewsCardList />
       <About />

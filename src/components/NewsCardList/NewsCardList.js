@@ -1,12 +1,22 @@
 import React from 'react';
+import NewsCard from '../NewsCard/NewsCard';
 import './NewsCardList.css';
 
 function NewsCardList() {
   return (
     <section className='card-list'>
       <div className='card-list__container'>
-        <h3 className='card-list__title'></h3>
+        <h3 className='card-list__title'>Результаты поиска</h3>
         <ul className='card-list__list'>
+          <li>
+            <NewsCard />
+          </li>
+          <li>
+            <NewsCard />
+          </li>
+          <li>
+            <NewsCard />
+          </li>
           {/* {Array.from(props.searchResultArray)
           .slice(0, arrayOfArticles)
           .map((card, key) => (

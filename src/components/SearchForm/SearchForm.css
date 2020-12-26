@@ -78,6 +78,7 @@
   .search-form {
     height: 400px;
     margin-top: -66px;
+    padding-top: 104px;
   }
 }
 /* .search-form__button:hover {
