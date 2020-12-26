@@ -11,27 +11,31 @@ function Footer() {
           <p className='footer__copyright'>
             &copy; 2020 Supersite, Powered by News API
           </p>
-          <div className='footer__info'>
-            <Link className='footer__link' to='/'>
-              Главная
-            </Link>
-            <a
-              target='_blank'
-              className='footer__link'
-              href='https://praktikum.yandex.ru/'
-            >
-              Яндекс.Практикум
-            </a>
-            <a
-              target='_blank'
-              className='footer__link footer__link_git'
-              href='https://github.com/Mobidikt'
-            ></a>
-            <a
-              target='_blank'
-              className='footer__link footer__link_strava'
-              href='https://www.strava.com/athletes/41677348'
-            ></a>
+          <div className='footer__menu'>
+            <div className='footer__links'>
+              <Link className='footer__link' to='/'>
+                Главная
+              </Link>
+              <a
+                target='_blank'
+                className='footer__link'
+                href='https://praktikum.yandex.ru/'
+              >
+                Яндекс.Практикум
+              </a>
+            </div>
+            <div className='footer__social'>
+              <a
+                target='_blank'
+                className='footer__link footer__link_git'
+                href='https://github.com/Mobidikt'
+              ></a>
+              <a
+                target='_blank'
+                className='footer__link footer__link_strava'
+                href='https://www.strava.com/athletes/41677348'
+              ></a>
+            </div>
           </div>
         </footer>
       </Route>
