@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
 import './App.css';
+// import '../../vendor/fonts.css';
 import SearchForm from '../SearchForm/SearchForm';
 import RegistrationPopup from '../RegistrationPopup/RegistrationPopup';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';

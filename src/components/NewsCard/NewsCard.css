@@ -1,0 +1,11 @@
+.card {
+  height: 576px;
+  max-width: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.card__image {
+  height: 272px;
+  width: 100%;
+}

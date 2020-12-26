@@ -21,10 +21,11 @@ function SearchForm(props) {
           />
           <button
             searchForm={true}
-            value='Искать'
             className='search-form__button'
             type='submit'
-          />
+          >
+            Искать
+          </button>
         </form>
         <span className={`search-form__error `}>
           Нужно ввести ключевое слово
