@@ -31,6 +31,11 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+.about__text:last-of-type {
+  margin-bottom: 0;
 }
 @media screen and (max-width: 1000px) {
   .about {
@@ -39,6 +44,14 @@
   .about__image {
     height: 232px;
     width: 232px;
+    margin: 20px 32px 20px 0;
+  }
+  .about__title {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+  .about__text {
+    margin-bottom: 23px;
   }
 }
 @media screen and (max-width: 600px) {

@@ -74,7 +74,12 @@
   align-self: flex-start;
   transition: background 0.5s ease;
 }
-
+@media screen and (max-width: 1000px) {
+  .search-form {
+    height: 400px;
+    margin-top: -66px;
+  }
+}
 /* .search-form__button:hover {
   background-color: #347eff;
 }

@@ -4,3 +4,8 @@
   display: flex;
   box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
+@media screen and (max-width: 1000px) {
+  .header {
+    height: 66px;
+  }
+}

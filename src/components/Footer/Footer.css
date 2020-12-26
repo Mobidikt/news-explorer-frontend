@@ -19,7 +19,7 @@
 }
 .footer__links {
   display: flex;
-  margin-right: 40px;
+  margin-right: 34px;
 }
 .footer__social {
   display: flex;
@@ -60,7 +60,7 @@
 @media screen and (max-width: 1000px) {
   .footer {
     height: 64px;
-    padding: 0px 40px 0px;
+    padding: 7px 40px 0px;
   }
   .footer__link {
     margin-right: 30px;

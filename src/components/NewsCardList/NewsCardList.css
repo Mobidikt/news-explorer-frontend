@@ -1,5 +1,6 @@
 .card-list {
   width: 100%;
+  background: #f5f6f7;
 }
 .card-list__container {
   max-width: 1440px;
@@ -31,4 +32,9 @@
 }
 .card-list__button:hover {
   opacity: 0.9;
+}
+@media screen and (max-width: 1000px) {
+  .card-list {
+    height: 654px;
+  }
 }
