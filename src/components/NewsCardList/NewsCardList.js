@@ -8,13 +8,13 @@ function NewsCardList() {
       <div className='card-list__container'>
         <h3 className='card-list__title'>Результаты поиска</h3>
         <ul className='card-list__list'>
-          <li>
+          <li className='card-list__item'>
             <NewsCard />
           </li>
-          <li>
+          <li className='card-list__item'>
             <NewsCard />
           </li>
-          <li>
+          <li className='card-list__item'>
             <NewsCard />
           </li>
           {/* {Array.from(props.searchResultArray)

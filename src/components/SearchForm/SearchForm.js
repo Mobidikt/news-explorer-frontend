@@ -5,10 +5,12 @@ function SearchForm(props) {
   return (
     <section className='search-form'>
       <div className='search-form__container'>
-        <h1 className='search-form__title'>Что творится в мире?</h1>
+        <h1 className='search-form__title'>
+          Что творится в<br /> мире?
+        </h1>
         <p className='search-form__subtitle'>
-          Находите самые свежие статьи на&nbsp;любую тему и&nbsp;сохраняйте
-          в&nbsp;своём личном кабинете.
+          Находите самые свежие статьи на&nbsp;любую тему и&nbsp;сохраняйте в
+          своём личном кабинете.
         </p>
 
         <form className='search-form__input-container'>
@@ -19,11 +21,7 @@ function SearchForm(props) {
             placeholder='Введите тему новости'
             required
           />
-          <button
-            searchForm={true}
-            className='search-form__button'
-            type='submit'
-          >
+          <button className='search-form__button' type='submit'>
             Искать
           </button>
         </form>

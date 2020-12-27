@@ -4,7 +4,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation.js';
 import './Header.css';
 
-function Header({ openInfoTooltip, openPopupLogin }) {
+function Header({ openPopupLogin }) {
   return (
     <Switch>
       <Route path='/404' exact />
@@ -17,7 +17,7 @@ function Header({ openInfoTooltip, openPopupLogin }) {
             <Route path='/' exact>
               <div className='header__menu'>
                 <Navigation />
-                <button className='header__button' onClick={openInfoTooltip}>
+                <button className='header__button' onClick={openPopupLogin}>
                   Авторизоваться
                 </button>
               </div>
@@ -25,7 +25,7 @@ function Header({ openInfoTooltip, openPopupLogin }) {
             <Route path='/saved-news'>
               <div className='header__menu'>
                 <Navigation />
-                <button className='header__button' onClick={openInfoTooltip}>
+                <button className='header__button' onClick={openPopupLogin}>
                   Авторизоваться
                 </button>
               </div>

@@ -26,6 +26,7 @@
   width: 430px;
   border-radius: 10px;
   background-color: #ffffff;
+  padding: 34px 35px 28px;
 }
 .popup__title {
   font-family: 'Roboto';
@@ -52,9 +53,9 @@
   color: #2f71e5;
   cursor: pointer;
 }
-@media screen and (max-width: 555px) {
+@media screen and (max-width: 450px) {
   .popup__container {
-    width: 280px;
+    width: 100%;
   }
 }
 .popup__close {
@@ -81,8 +82,8 @@
   .popup__close {
     height: 30px;
     width: 30px;
-    top: -32px;
-    right: -32px;
+    top: -40px;
+    right: 12px;
   }
 }
 
@@ -116,4 +117,9 @@
 .popup__button_disable {
   cursor: default;
   background: #e6e8eb;
+}
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
