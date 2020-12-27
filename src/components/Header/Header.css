@@ -4,7 +4,8 @@
   height: 80px;
   width: 100%;
   box-sizing: border-box;
-  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(196, 196, 196, 0.01);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
 }
 .header_container {
   box-sizing: border-box;
@@ -25,6 +26,12 @@
   cursor: pointer;
   text-decoration: none;
   color: #ffffff;
+}
+.header_black {
+  border-bottom: 1px solid #d1d2d6;
+}
+.header__logo_black {
+  color: #1a1b22;
 }
 .header__menu {
   display: flex;
@@ -48,6 +55,10 @@
   line-height: 24px;
   cursor: pointer;
   outline: none;
+}
+.header__button_black {
+  color: #1a1b22;
+  border-color: #1a1b22;
 }
 @media screen and (max-width: 1000px) {
   .header {

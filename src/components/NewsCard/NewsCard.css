@@ -1,12 +1,86 @@
 .card {
+  position: relative;
   height: 100%;
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
-  background-color: tomato;
+  background-color: #ffffff;
 }
 
 .card__image {
   height: 272px;
   width: 100%;
+  margin-bottom: 20px;
+}
+.card__info {
+  padding: 0 16px 16px;
+}
+.card__button {
+  position: absolute;
+  top: 4%;
+  right: 6%;
+  height: 40px;
+  width: 40px;
+  background-color: #ffffff;
+  background-image: url(../../images/union.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+.card__date {
+  font-family: 'Sans Pro';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin: 0 0 12px;
+}
+.card__title {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 24px;
+  color: #1a1b22;
+  margin: 0 0 10px;
+}
+.card__text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  margin: 0 0 12px;
+  height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.card__source {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #b6bcbf;
+}
+@media screen and (max-width: 1000px) {
+  .card__image {
+    height: 150px;
+    margin-bottom: 16px;
+  }
+  .card__text {
+    height: 88px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .card__image {
+    height: 196px;
+  }
 }

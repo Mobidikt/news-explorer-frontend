@@ -5,13 +5,13 @@ import './App.css';
 import '../../vendor/fonts/fonts.css';
 import RegistrationPopup from '../RegistrationPopup/RegistrationPopup';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import NewsCardList from '../NewsCardList/NewsCardList';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../LoginPopup/LoginPopup';
 
 function App() {
+  const { pathname } = useLocation();
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [popupLoginOpen, setPopupLoginOpen] = useState(false);
   const handleEsc = (e) => {
@@ -44,7 +44,7 @@ function App() {
   };
   return (
     <div className='App'>
-      <Header openPopupLogin={openPopupLogin} />
+      <Header location={pathname} openPopupLogin={openPopupLogin} />
       <Switch>
         <Route path='/' exact>
           <Main />

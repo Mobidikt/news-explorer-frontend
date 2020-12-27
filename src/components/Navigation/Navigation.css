@@ -23,6 +23,14 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+  box-sizing: border-box;
+}
+.nav__item_active {
+  border-bottom: 3px solid #ffffff;
+}
+.nav__item_black {
+  color: #1a1b22;
+  border-color: #1a1b22;
 }
 @media screen and (max-width: 1000px) {
   .nav__item {

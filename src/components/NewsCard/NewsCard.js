@@ -4,12 +4,20 @@ import './NewsCard.css';
 function NewsCard() {
   return (
     <div className='card'>
-      <img src='' alt=''></img>
+      <img className='card__image' src='' alt=''></img>
       <div className='card__info'>
-        <p className='card__date'></p>
-        <h5 className='card__title'></h5>
-        <p className='card__text'></p>
+        <p className='card__date'>2 августа, 2019</p>
+        <h5 className='card__title'>
+          Лесные огоньки: история одной фотографии
+        </h5>
+        <p className='card__text'>
+          В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+          складываться система национальных парков – охраняемых территорий, где
+          и сегодня каждый может приобщиться к природе.
+        </p>
+        <p className='card__source'>Медуза</p>
       </div>
+      <div className='card__button'></div>
     </div>
   );
 }

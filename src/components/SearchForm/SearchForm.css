@@ -64,6 +64,9 @@
 .search-form__input:disabled {
   background-color: white;
 }
+.search-form__input:focus {
+  text-decoration: underline;
+}
 
 .search-form__button {
   box-sizing: border-box;
