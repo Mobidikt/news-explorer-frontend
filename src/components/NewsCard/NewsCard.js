@@ -8,7 +8,7 @@ function NewsCard() {
       <div className='card__info'>
         <p className='card__date'>2 августа, 2019</p>
         <h5 className='card__title'>
-          Лесные огоньки: история одной фотографии
+          «Первозданная тайга»: новый фотопроект Игоря Шпиленка
         </h5>
         <p className='card__text'>
           В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала

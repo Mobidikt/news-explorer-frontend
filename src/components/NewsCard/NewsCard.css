@@ -37,13 +37,19 @@
   margin: 0 0 12px;
 }
 .card__title {
-  font-family: 'Roboto Slab';
+  font-family: Roboto Slab;
   font-style: normal;
   font-weight: normal;
-  font-size: 22px;
-  line-height: 24px;
+  font-size: 26px;
+  line-height: 30px;
   color: #1a1b22;
   margin: 0 0 10px;
+  max-height: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .card__text {
   font-family: 'Roboto';
@@ -57,7 +63,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
 .card__source {
@@ -69,17 +75,34 @@
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #b6bcbf;
+  margin: 0;
 }
 @media screen and (max-width: 1000px) {
   .card__image {
     height: 150px;
     margin-bottom: 16px;
   }
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+  }
   .card__text {
     height: 88px;
+    -webkit-line-clamp: 4;
   }
 }
 @media screen and (max-width: 550px) {
+  .card__date {
+    margin-bottom: 10px;
+  }
+  .card__title {
+    font-size: 22px;
+    line-height: 28px;
+    -webkit-line-clamp: 2;
+  }
+  .card__text {
+    margin-bottom: 8px;
+  }
   .card__image {
     height: 196px;
   }

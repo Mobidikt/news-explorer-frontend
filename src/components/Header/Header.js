@@ -18,7 +18,7 @@ function Header({ location, openPopupLogin }) {
       <Route path='/404' exact />
       <Route path='*'>
         <header className={classHeader}>
-          <div className='header_container'>
+          <div className='header__container'>
             <Link to='/' className={classLogo}>
               NewsExplorer
             </Link>
