@@ -5,7 +5,7 @@ import './App.css';
 import '../../vendor/fonts/fonts.css';
 import RegistrationPopup from '../RegistrationPopup/RegistrationPopup';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../LoginPopup/LoginPopup';
@@ -14,6 +14,7 @@ function App() {
   const { pathname } = useLocation();
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [popupLoginOpen, setPopupLoginOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
@@ -44,15 +45,24 @@ function App() {
   };
   return (
     <div className='App'>
-      <Header location={pathname} openPopupLogin={openPopupLogin} />
+      <Header
+        location={pathname}
+        openPopupLogin={openPopupLogin}
+        loggedIn={loggedIn}
+      />
       <Switch>
         <Route path='/' exact>
           <Main />
         </Route>
-        <Route path='/saved-news' exact>
+        <Route path='/saved-news'>
           <SavedNews />
         </Route>
+        <Route path='/404' exact></Route>
+        <Route path='*'>
+          <Redirect to='/404' />
+        </Route>
       </Switch>
+
       <Footer />
       <LoginPopup open={popupLoginOpen} onClose={closeAllPopups} />
       <RegistrationPopup />

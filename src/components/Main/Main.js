@@ -11,7 +11,7 @@ function Main({ openInfoTooltip, openPopupLogin }) {
       <SearchForm />
       <NewsCardList />
       {/* <Preloader /> */}
-      <NotFoundSearch />
+      {/* <NotFoundSearch /> */}
       <About />
     </main>
   );
