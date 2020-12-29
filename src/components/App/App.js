@@ -9,6 +9,7 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../LoginPopup/LoginPopup';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   const { pathname } = useLocation();
@@ -57,7 +58,9 @@ function App() {
         <Route path='/saved-news'>
           <SavedNews />
         </Route>
-        <Route path='/404' exact></Route>
+        <Route path='/404' exact>
+          <NotFound />
+        </Route>
         <Route path='*'>
           <Redirect to='/404' />
         </Route>
