@@ -2,6 +2,7 @@ import React from 'react';
 import './PopupWithForm.css';
 
 function PopupWithForm(props) {
+  console.log(props.isOpen);
   return (
     <div
       className={`popup popup_type_${props.name} ${
@@ -10,20 +11,7 @@ function PopupWithForm(props) {
     >
       <div className={`popup__container popup__container_${props.name}`}>
         <h3 className='popup__title'>{props.title}</h3>
-        <form
-          className='popup__form'
-          name={props.name}
-          noValidate
-          onSubmit={props.onSubmit}
-        >
-          {props.children}
-          <button type='submit' className='popup__button'>
-            {props.button_text}
-          </button>
-        </form>
-        <p className='popup__text'>
-          или <span className='popup__link'>{props.textLink}</span>
-        </p>
+        {props.children}
         <button
           type='button'
           className='popup__close'

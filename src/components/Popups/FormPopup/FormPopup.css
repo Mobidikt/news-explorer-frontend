@@ -1,0 +1,31 @@
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.popup__button {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  text-align: center;
+  width: 360px;
+  height: 64px;
+  color: #ffffff;
+  background: #2f71e5;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.popup__button:hover {
+  background: #347eff;
+}
+.popup__button:active {
+  background: #2a65cc;
+}
+.popup__button_disable {
+  cursor: default;
+  background: #e6e8eb;
+}

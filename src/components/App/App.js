@@ -3,19 +3,20 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './App.css';
 import '../../vendor/fonts/fonts.css';
-import RegistrationPopup from '../RegistrationPopup/RegistrationPopup';
-import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import RegistrationPopup from '../Popups/RegistrationPopup/RegistrationPopup';
+import InfoTooltip from '../Popups/InfoTooltip/InfoTooltip';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
-import LoginPopup from '../LoginPopup/LoginPopup';
+import LoginPopup from '../Popups/LoginPopup/LoginPopup';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
   const { pathname } = useLocation();
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [popupLoginOpen, setPopupLoginOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [popupRegistrationOpen, setPopupRegistrationOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
@@ -34,6 +35,11 @@ function App() {
     setInfoTooltipOpen(true);
     setEventListeners();
   };
+  const openPopupRegistration = () => {
+    setPopupRegistrationOpen(true);
+    setEventListeners();
+  };
+
   const openPopupLogin = () => {
     setPopupLoginOpen(true);
     setEventListeners();
@@ -41,6 +47,7 @@ function App() {
   const closeAllPopups = () => {
     setInfoTooltipOpen(false);
     setPopupLoginOpen(false);
+    setPopupRegistrationOpen(false);
     document.removeEventListener('keydown', handleEsc);
     document.removeEventListener('click', overlayClose);
   };
@@ -49,7 +56,7 @@ function App() {
       <Header
         location={pathname}
         openPopupLogin={openPopupLogin}
-        loggedIn={loggedIn}
+        isLogin={isLogin}
       />
       <Switch>
         <Route path='/' exact>
@@ -67,8 +74,16 @@ function App() {
       </Switch>
 
       <Footer />
-      <LoginPopup open={popupLoginOpen} onClose={closeAllPopups} />
-      <RegistrationPopup />
+      <LoginPopup
+        open={popupLoginOpen}
+        onClose={closeAllPopups}
+        switchPopup={openPopupRegistration}
+      />
+      <RegistrationPopup
+        open={popupRegistrationOpen}
+        onClose={closeAllPopups}
+        switchPopup={openPopupLogin}
+      />
       <InfoTooltip open={infoTooltipOpen} onClose={closeAllPopups} />
     </div>
   );
