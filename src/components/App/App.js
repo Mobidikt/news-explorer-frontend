@@ -51,12 +51,20 @@ function App() {
     document.removeEventListener('keydown', handleEsc);
     document.removeEventListener('click', overlayClose);
   };
+  const exit = () => {
+    setIsLogin(false);
+  };
+  const handleLogin = () => {};
+  const handleRegister = (name, password, email) => {
+    openInfoTooltip();
+  };
   return (
     <div className='App'>
       <Header
         location={pathname}
         openPopupLogin={openPopupLogin}
         isLogin={isLogin}
+        exit={exit}
       />
       <Switch>
         <Route path='/' exact>
@@ -78,11 +86,13 @@ function App() {
         open={popupLoginOpen}
         onClose={closeAllPopups}
         switchPopup={openPopupRegistration}
+        login={handleLogin}
       />
       <RegistrationPopup
         open={popupRegistrationOpen}
         onClose={closeAllPopups}
         switchPopup={openPopupLogin}
+        registration={handleRegister}
       />
       <InfoTooltip open={infoTooltipOpen} onClose={closeAllPopups} />
     </div>

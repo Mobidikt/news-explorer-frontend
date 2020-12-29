@@ -14,7 +14,7 @@
   text-align: left;
 }
 .search-form__title {
-  font-family: Roboto Slab, Georgia, 'Times New Roman', Times, monospace;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, monospace;
   font-style: normal;
   font-weight: normal;
   font-size: 60px;
@@ -82,6 +82,22 @@
   border-radius: 100px;
   padding: 0;
   flex-shrink: 0;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+.search-form__button:hover {
+  background-color: #347eff;
+}
+
+.search-form__button:focus {
+  background-color: #2a65cc;
+}
+
+.search-form__button:disabled {
+  color: #b6bcbf;
+  background-color: #e6e8eb;
+  pointer-events: none;
 }
 @media screen and (max-width: 1000px) {
   .search-form {
@@ -103,20 +119,8 @@
     max-width: 452px;
   }
 }
-/* .search-form__button:hover {
-  background-color: #347eff;
-}
 
-.search-form__button:focus {
-  background-color: #2a65cc;
-}
-
-.search-form__button:disabled {
-  color: #b6bcbf;
-  background-color: #e6e8eb;
-  pointer-events: none;
-}
-
+/*
 .search-form__error {
   font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   font-size: 14px;

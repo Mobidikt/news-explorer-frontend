@@ -21,7 +21,7 @@ function RegistrationPopup({ open, onClose, switchPopup }) {
     switchPopup();
   };
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // props.onAddPlace({
     //   name: name,
     //   link: link,

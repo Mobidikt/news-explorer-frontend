@@ -1,11 +1,8 @@
 import React from 'react';
 import pluralize from '../../utils/pluralize';
-// import { ROUTES_MAP } from '../../utils/routesMap';
-
 import './SavedNewsHeader.css';
 
 function SavedNewsHeader({ name }) {
-  //Это конфиг для заголовка страницы SavedNews
   const config = {
     zero: ', у Вас нет сохраненных статей',
     one: ', у Вас {} сохраненная статья',
@@ -14,7 +11,6 @@ function SavedNewsHeader({ name }) {
     radix: 10,
     fewMax: 4,
   };
-  console.log(pluralize(5, config));
   return (
     <section className='saved-news-header'>
       <div className='saved-news-header__container'>

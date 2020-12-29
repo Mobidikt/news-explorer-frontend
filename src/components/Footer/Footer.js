@@ -17,25 +17,25 @@ function Footer() {
                 <Link className='footer__link' to='/'>
                   Главная
                 </Link>
-                <a
+                <Link
                   target='_blank'
                   className='footer__link'
-                  href='https://praktikum.yandex.ru/'
+                  to='https://praktikum.yandex.ru/'
                 >
                   Яндекс.Практикум
-                </a>
+                </Link>
               </div>
               <div className='footer__social'>
-                <a
+                <Link
                   target='_blank'
                   className='footer__link footer__link_git'
-                  href='https://github.com/Mobidikt'
-                ></a>
-                <a
+                  to='https://github.com/Mobidikt'
+                />
+                <Link
                   target='_blank'
                   className='footer__link footer__link_strava'
-                  href='https://www.strava.com/athletes/41677348'
-                ></a>
+                  to='https://www.strava.com/athletes/41677348'
+                />
               </div>
             </div>
           </div>

@@ -18,7 +18,7 @@ function LoginPopup({ onClose, open, switchPopup }) {
     switchPopup();
   };
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // props.onAddPlace({
     //   name: name,
     //   link: link,
@@ -35,12 +35,12 @@ function LoginPopup({ onClose, open, switchPopup }) {
             type='email'
             placeholder='Введите почту'
             className='popup__input'
-            id='email'
+            id='email-login'
             required
             value={email}
             onChange={handleEmailChange}
           />
-          <span className='popup__error' id='email-error' />
+          <span className='popup__error' id='email-login-error' />
         </label>
         <label className='popup__field'>
           Пароль
@@ -49,13 +49,13 @@ function LoginPopup({ onClose, open, switchPopup }) {
             type='password'
             placeholder='Введите пароль'
             className='popup__input'
-            id='password'
+            id='password-login'
             minLength='5'
             required
             value={password}
             onChange={handlePasswordChange}
           />
-          <span className='popup__error' id='password-error' />
+          <span className='popup__error' id='password-login-error' />
         </label>
       </FormPopup>
       <p className='popup__text'>

@@ -6,25 +6,24 @@ import './Header.css';
 
 function Header({ location, openPopupLogin }) {
   const mainLocation = location === '/';
-  const classHeader = mainLocation ? 'header' : 'header header_black';
-  const classLogo = mainLocation
-    ? 'header__logo'
-    : 'header__logo header__logo_black';
-  const classButton = mainLocation
-    ? 'header__button'
-    : 'header__button header__button_black';
+  const classHeader = mainLocation ? '' : 'header_black';
+  const classLogo = mainLocation ? '' : 'header__logo_black';
+  const classButton = mainLocation ? '' : 'header__button_black';
   return (
     <Switch>
       <Route path='/404' exact />
       <Route path='*'>
-        <header className={classHeader}>
+        <header className={`header ${classHeader}`}>
           <div className='header__container'>
-            <Link to='/' className={classLogo}>
+            <Link to='/' className={`header__logo ${classLogo}`}>
               NewsExplorer
             </Link>
             <div className='header__menu'>
               <Navigation mainLocation={mainLocation} />
-              <button className={classButton} onClick={openPopupLogin}>
+              <button
+                className={`header__button ${classButton}`}
+                onClick={openPopupLogin}
+              >
                 Авторизоваться
               </button>
             </div>
