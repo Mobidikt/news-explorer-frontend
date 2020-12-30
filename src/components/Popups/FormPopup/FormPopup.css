@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  padding-top: 22px;
 }
 .popup__button {
   font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
@@ -29,4 +30,14 @@
 .popup__button_disable {
   cursor: default;
   background: #e6e8eb;
+}
+.server-error {
+  min-height: 14px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #ff0000;
 }

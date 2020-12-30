@@ -20,14 +20,14 @@
 .about__title {
   margin: 52px 0 24px;
   padding: 0;
-  font-family: Roboto Slab;
+  font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: normal;
   font-size: 40px;
   line-height: 46px;
 }
 .about__text {
-  font-family: Roboto;
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

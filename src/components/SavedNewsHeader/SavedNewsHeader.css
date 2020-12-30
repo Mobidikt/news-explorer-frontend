@@ -14,7 +14,7 @@
   align-items: flex-start;
 }
 .saved-news-header__name {
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -23,7 +23,7 @@
   margin: 0;
 }
 .saved-news-header__title {
-  font-family: 'Roboto Slab';
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times;
   font-style: normal;
   font-weight: normal;
   font-size: 40px;
@@ -33,7 +33,7 @@
   max-width: 500px;
 }
 .saved-news-header__info {
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

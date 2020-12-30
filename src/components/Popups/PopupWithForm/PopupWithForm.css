@@ -29,7 +29,7 @@
   padding: 34px 35px 28px;
 }
 .popup__title {
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   font-style: normal;
   color: #1a1b22;
   font-weight: 900;
@@ -45,7 +45,7 @@
   margin: 16px 0 0;
 }
 .popup__link {
-  font-family: Inter;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

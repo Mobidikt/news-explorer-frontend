@@ -14,7 +14,7 @@
   text-align: left;
 }
 .search-form__title {
-  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, monospace;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times;
   font-style: normal;
   font-weight: normal;
   font-size: 60px;
@@ -117,7 +117,7 @@
     line-height: 40px;
   }
   .search-form__container {
-    max-width: 452px;
+    max-width: 448px;
   }
   .search-form__button {
     width: 157px;

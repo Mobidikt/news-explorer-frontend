@@ -10,6 +10,9 @@ function FormPopup(props) {
       onSubmit={props.onSubmit}
     >
       {props.children}
+
+      <span className='server-error' />
+
       <button type='submit' className='popup__button'>
         {props.button_text}
       </button>

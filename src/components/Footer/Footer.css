@@ -14,7 +14,7 @@
   justify-content: space-between;
 }
 .footer__copyright {
-  font-family: Roboto;
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   font-size: 16px;
   margin: 0;
   padding: 0;
@@ -36,7 +36,7 @@
   color: #1a1b22;
   margin-right: 40px;
   cursor: pointer;
-  font-family: Roboto;
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

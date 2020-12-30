@@ -4,7 +4,7 @@
   color: #000000;
 }
 .notFound__title {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -12,7 +12,7 @@
   text-align: center;
 }
 .notFound__text {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
