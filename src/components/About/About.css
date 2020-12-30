@@ -10,6 +10,7 @@
   width: 464px;
   border-radius: 50%;
   margin-right: 56px;
+  object-fit: cover;
 }
 .about__info {
   max-width: 600px;
@@ -17,7 +18,7 @@
   text-align: left;
 }
 .about__title {
-  margin: 0 0 24px;
+  margin: 52px 0 24px;
   padding: 0;
   font-family: Roboto Slab;
   font-style: normal;
@@ -31,7 +32,7 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
-  margin: 0;
+  margin: 0 0 23px;
   padding: 0;
 }
 .about__text:last-of-type {
@@ -49,6 +50,7 @@
   .about__title {
     font-size: 30px;
     margin-bottom: 5px;
+    margin-top: 0;
   }
   .about__text {
     margin-bottom: 23px;
@@ -63,7 +65,9 @@
   .about__image {
     height: 272px;
     width: 272px;
-    margin-right: 0;
-    margin-bottom: 24px;
+    margin: 0 0 20px;
+  }
+  .about__title {
+    margin-bottom: 14px;
   }
 }

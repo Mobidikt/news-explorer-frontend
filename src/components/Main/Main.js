@@ -10,8 +10,8 @@ function Main({ openInfoTooltip, openPopupLogin }) {
     <main>
       <SearchForm />
       <NewsCardList />
-      <Preloader />
-      <NotFoundSearch />
+      {/* <Preloader />
+      <NotFoundSearch /> */}
       <About />
     </main>
   );

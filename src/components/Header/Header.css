@@ -66,3 +66,9 @@
     height: 66px;
   }
 }
+@media screen and (max-width: 550px) {
+  .header {
+    padding: 0 16px;
+    height: 56px;
+  }
+}

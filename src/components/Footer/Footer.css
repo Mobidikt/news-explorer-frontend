@@ -84,14 +84,18 @@
     order: 1;
     padding-bottom: 25px;
   }
-
   .footer__menu {
     width: 100%;
     justify-content: space-between;
-    margin-bottom: 38px;
+    margin-bottom: 4px;
   }
   .footer__links {
+    margin-top: 12px;
     text-align: left;
     flex-direction: column;
+  }
+  .footer__link {
+    margin-right: 30px;
+    margin-bottom: 25px;
   }
 }

@@ -11,7 +11,6 @@ function LoginPopup({ onClose, open, switchPopup }) {
   };
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    console.log(password, 'password');
   };
   const passing = () => {
     onClose();
