@@ -10,10 +10,11 @@
 .card__image {
   height: 272px;
   width: 100%;
-  margin-bottom: 20px;
+  object-fit: cover;
+  margin-bottom: 14px;
 }
 .card__info {
-  padding: 0 16px 16px;
+  padding: 0 24px 16px;
 }
 .card__button {
   position: absolute;
@@ -22,10 +23,44 @@
   height: 40px;
   width: 40px;
   background-color: #ffffff;
-  background-image: url(../../images/union.svg);
+  cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 5px;
+}
+.card-news__button {
+  background-image: url(../../images/card/bookmark.svg);
+}
+.card-news__button:hover {
+  background-image: url(../../images/card/bookmark_hover.svg);
+}
+.card-news__button:active {
+  background-image: url(../../images/card/bookmark_active.svg);
+}
+.card-saved-news__button {
+  background-image: url(../../images/card/icon-delete.svg);
+}
+.card-saved-news__button:hover {
+  background-image: url(../../images/card/icon_delete_hover.svg);
+}
+.card__origin {
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  top: 4%;
+  left: 6%;
+  padding: 8px 12px;
+  margin: 0;
+  background-color: #ffffff;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
 }
 .card__date {
   font-family: 'Sans Pro', Georgia, 'Times New Roman', Times;
@@ -43,7 +78,7 @@
   font-size: 26px;
   line-height: 30px;
   color: #1a1b22;
-  margin: 0 0 10px;
+  margin: 0 0 15px;
   max-height: 90px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -59,7 +94,7 @@
   line-height: 22px;
   color: #1a1b22;
   margin: 0 0 12px;
-  height: 110px;
+  max-height: 110px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -77,6 +112,7 @@
   color: #b6bcbf;
   margin: 0;
 }
+
 @media screen and (max-width: 1000px) {
   .card__image {
     height: 150px;
@@ -87,7 +123,7 @@
     line-height: 24px;
   }
   .card__text {
-    height: 88px;
+    max-height: 88px;
     -webkit-line-clamp: 4;
   }
 }

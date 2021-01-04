@@ -5,10 +5,11 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 import './SavedNews.css';
 
+const name = 'Грета';
 function SavedNews() {
   return (
     <main>
-      <SavedNewsHeader />
+      <SavedNewsHeader name={name} />
       <NewsCardList />
     </main>
   );

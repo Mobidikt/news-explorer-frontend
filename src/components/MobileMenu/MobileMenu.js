@@ -3,7 +3,7 @@ import React from 'react';
 import Navigation from '../Navigation/Navigation.js';
 import './MobileMenu.css';
 
-function MobileMenu({ mainLocation, openPopupLogin, isOpen }) {
+function MobileMenu({ mainLocation, openPopup, isOpen }) {
   return (
     <div className={`mobile-menu ${isOpen ? 'mobile-menu_opened' : ''} `}>
       <div
@@ -11,10 +11,7 @@ function MobileMenu({ mainLocation, openPopupLogin, isOpen }) {
           mainLocation ? '' : 'mobile-menu__container_white'
         }`}
       >
-        <Navigation
-          mainLocation={mainLocation}
-          openPopupLogin={openPopupLogin}
-        />
+        <Navigation mainLocation={mainLocation} openPopupLogin={openPopup} />
       </div>
     </div>
   );

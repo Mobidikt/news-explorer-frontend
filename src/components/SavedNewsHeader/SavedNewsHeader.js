@@ -4,10 +4,10 @@ import './SavedNewsHeader.css';
 
 function SavedNewsHeader({ name }) {
   const config = {
-    zero: ', у Вас нет сохраненных статей',
-    one: ', у Вас {} сохраненная статья',
-    few: ', у Вас {} сохраненные статьи',
-    many: ', у Вас {} сохраненных статей',
+    zero: ', у вас нет сохраненных статей',
+    one: ', у вас {} сохраненная статья',
+    few: ', у вас {} сохраненные статьи',
+    many: ', у вас {} сохраненных статей',
     radix: 10,
     fewMax: 4,
   };
@@ -21,7 +21,9 @@ function SavedNewsHeader({ name }) {
         </h1>
         <p className='saved-news-header__info'>
           По ключевым словам:
-          <span className='saved-news-header__info_accent'> тайга</span> и
+          <span className='saved-news-header__info_accent'> Тайга,</span>
+          <span className='saved-news-header__info_accent'> Природа</span> и
+          <span className='saved-news-header__info_accent'> 2-м другим</span>
         </p>
       </div>
     </section>

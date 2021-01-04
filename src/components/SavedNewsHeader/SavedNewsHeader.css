@@ -1,7 +1,7 @@
 .saved-news-header {
   width: 100%;
   box-sizing: border-box;
-  padding: 40px 104px 56px;
+  padding: 120px 104px 56px;
 }
 .saved-news-header__container {
   box-sizing: border-box;
@@ -46,7 +46,7 @@
 }
 @media screen and (max-width: 1000px) {
   .saved-news-header {
-    padding: 24px 40px 32px;
+    padding: 90px 40px 32px;
   }
   .saved-news-header__title {
     max-width: 340px;
@@ -56,6 +56,6 @@
 }
 @media screen and (max-width: 550px) {
   .saved-news-header {
-    padding: 8px 16px 32px;
+    padding: 66px 16px 32px;
   }
 }

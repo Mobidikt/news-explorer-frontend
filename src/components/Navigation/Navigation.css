@@ -42,12 +42,11 @@
 .nav__button {
   background-color: transparent;
   border: none;
-  padding: 8px 12px;
+  padding: 12px 18px;
   border: 1px solid #ffffff;
   box-sizing: border-box;
   border-radius: 100px;
   height: 48px;
-  width: 176px;
   color: #ffffff;
   font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   font-style: normal;
@@ -62,13 +61,25 @@
   color: #1a1b22;
   border-color: #1a1b22;
 }
+.nav__button_user {
+  min-width: 112px;
+}
+.nav__exit {
+  display: inline-block;
+  margin-left: 10px;
+  height: 16px;
+  width: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../images/exit.svg);
+}
 @media screen and (max-width: 1000px) {
   .nav__item {
     margin-right: 16px;
   }
   .nav__button {
+    padding: 8px 12px;
     height: 40px;
-    width: 152px;
     font-size: 16px;
   }
   .nav__item_link {

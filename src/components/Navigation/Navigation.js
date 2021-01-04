@@ -1,40 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Navigation.css';
 
-function Navigation({ mainLocation, openPopupLogin }) {
+function Navigation({ mainLocation, openPopupLogin, user }) {
+  const exit = () => {};
   return (
     <nav className='nav'>
       <ul className='nav__list'>
         <li className='nav__item'>
-          <Link
-            title='Перейти на страницу с поиском'
+          <a
             className={`nav__item_link ${
               mainLocation ? `nav__item_active ` : `nav__item_black`
             }`}
-            to='/'
+            href='/'
           >
             Главная
-          </Link>
+          </a>
         </li>
         <li className='nav__item'>
-          <Link
-            title='Перейти на страницу с сохранёнными статьями'
+          <a
             className={`nav__item_link ${
               mainLocation ? `` : `nav__item_active nav__item_black `
             }`}
-            to='/saved-news'
+            href='/saved-news'
           >
             Сохранённые статьи
-          </Link>
+          </a>
         </li>
         <li className='nav__item'>
-          <button
-            className={`nav__button ${mainLocation ? `` : `nav__button_black`}`}
-            onClick={openPopupLogin}
-          >
-            Авторизоваться
-          </button>
+          {user ? (
+            <button
+              className={`nav__button nav__button_user ${
+                mainLocation ? `` : `nav__button_black`
+              }`}
+            >
+              Грета
+              <i className='nav__exit' onClick={exit}></i>
+            </button>
+          ) : (
+            <button
+              className={`nav__button ${
+                mainLocation ? `` : `nav__button_black`
+              }`}
+              onClick={openPopupLogin}
+            >
+              Авторизоваться
+            </button>
+          )}
         </li>
       </ul>
     </nav>

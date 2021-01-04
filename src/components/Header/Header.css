@@ -1,11 +1,14 @@
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
   padding: 0 104px;
   color: #ffffff;
   height: 80px;
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(196, 196, 196, 0.01);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
 .header__container {
   box-sizing: border-box;
@@ -29,6 +32,7 @@
 }
 .header_black {
   border-bottom: 1px solid #d1d2d6;
+  box-shadow: inset 0px -1px 0px #d1d2d6;
 }
 .header_background-black {
   background-color: #1a1b22;
@@ -50,6 +54,7 @@
   position: relative;
   cursor: pointer;
 }
+
 .hamburger__line {
   transition: all 0.3s ease-in;
   top: calc(50% - 2px);
@@ -65,18 +70,23 @@
   height: 2px;
   margin-top: 5px;
 }
+.hamburger__line_blak,
+.hamburger__line_blak:after {
+  background-color: #000000;
+}
 .hamburger__line:after {
   top: -13px;
   left: 0;
   transition: all 0.3s ease-in;
 }
 .hamburger__line_active {
-  transform: rotate(-90deg);
+  transform: rotate(45deg);
   transition: all 0.3s ease-in;
-  background: #fff;
+  margin-top: 0;
 }
 .hamburger__line_active:after {
-  background: #fff;
+  top: -5px;
+  transform: rotate(-90deg);
   transition: all 0.3s ease-in;
 }
 .header__logo_black {

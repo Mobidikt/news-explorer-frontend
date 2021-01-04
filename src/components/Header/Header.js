@@ -1,15 +1,17 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import React, { useMemo, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import MobileMenu from '../MobileMenu/MobileMenu.js';
-// import { ROUTES_MAP } from '../../utils/routesMap';
+import { ROUTES_MAP } from '../../utils/routesMap';
 import Navigation from '../Navigation/Navigation.js';
 import './Header.css';
 
+const user = false;
 function Header({ location, openPopupLogin }) {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
-  const mainLocation = location === '/';
+
+  const mainLocation = location === ROUTES_MAP.MAIN;
   const classLogo = mainLocation ? '' : 'header__logo_black';
-  const classButton = mainLocation ? '' : 'header__button_black';
+  const classButton = mainLocation ? '' : 'hamburger__line_blak';
   const closeMobileMenu = () => {
     setOpenMobileMenu(false);
     document.removeEventListener('click', overlayClose);
@@ -29,39 +31,46 @@ function Header({ location, openPopupLogin }) {
       document.body.style.overflow = 'hidden';
     }
   };
+  const openPopup = () => {
+    closeMobileMenu();
+    openPopupLogin();
+  };
   const classHeader = useMemo(() => {
     if (openMobileMenu) {
       return mainLocation ? 'header_background-black' : 'header_black';
     }
-    return '';
+    return mainLocation ? '' : 'header_black';
   }, [mainLocation, openMobileMenu]);
-  useEffect(() => {
-    closeMobileMenu();
-  }, [location]);
   return (
     <Switch>
       <Route path='/404' exact />
       <Route path='*'>
         <header className={`header ${classHeader}`}>
           <div className='header__container'>
-            <Link to='/' className={`header__logo ${classLogo}`}>
+            <a href='/' className={`header__logo ${classLogo}`}>
               NewsExplorer
-            </Link>
+            </a>
             <div className='header__menu'>
               <Navigation
+                user={user}
                 mainLocation={mainLocation}
                 openPopupLogin={openPopupLogin}
               />
             </div>
             <button className='header__button_menu-mobile' onClick={showMenu}>
-              <span className={`hamburger__line ${classButton}`}></span>
+              <span
+                className={`hamburger__line ${classButton} ${
+                  openMobileMenu ? 'hamburger__line_active' : ''
+                }`}
+              ></span>
             </button>
           </div>
         </header>
         <MobileMenu
+          user={user}
           isOpen={openMobileMenu}
           mainLocation={mainLocation}
-          openPopupLogin={openPopupLogin}
+          openPopup={openPopup}
         />
       </Route>
     </Switch>
