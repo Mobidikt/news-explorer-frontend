@@ -112,7 +112,39 @@
   color: #b6bcbf;
   margin: 0;
 }
+.card__informer {
+  box-sizing: border-box;
+  height: 40px;
+  display: none;
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  right: 100%;
+  transform: translateX(-5px);
+  padding: 14px 10px;
+  margin: 0;
+  background-color: #ffffff;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.card__button:hover .card__informer {
+  display: block;
+}
 
+@media screen and (max-width: 1300px) {
+  .card__informer {
+    top: 100%;
+    transform: translate(40px, 5px);
+  }
+}
 @media screen and (max-width: 1000px) {
   .card__image {
     height: 150px;

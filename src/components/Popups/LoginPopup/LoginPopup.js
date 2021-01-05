@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import FormPopup from '../FormPopup/FormPopup';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
-import './LoginPopup.css';
 
 function LoginPopup({ onClose, open, switchPopup }) {
   const [email, setEmail] = useState('');

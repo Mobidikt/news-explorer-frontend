@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import './App.css';
 import '../../vendor/fonts/fonts.css';
 import RegistrationPopup from '../Popups/RegistrationPopup/RegistrationPopup';
 import InfoTooltip from '../Popups/InfoTooltip/InfoTooltip';

@@ -3,7 +3,6 @@
   background-image: url('../../images/search-bg.png');
   background-size: cover;
   background-position: center;
-  /* margin-top: -80px; */
   padding-top: 160px;
   box-sizing: border-box;
 }
@@ -124,7 +123,6 @@
 @media screen and (max-width: 1000px) {
   .search-form {
     height: 400px;
-    /* margin-top: -66px; */
     padding: 104px 16px 0;
     background-image: url('../../images/search-bg-desktop.png');
   }
@@ -149,7 +147,6 @@
 @media screen and (max-width: 550px) {
   .search-form {
     height: 536px;
-    /* margin-top: -56px; */
     padding: 86px 16px 0;
     background-image: url('../../images/search-bg-mobile.png');
   }

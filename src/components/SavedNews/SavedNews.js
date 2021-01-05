@@ -3,8 +3,6 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 // import { ROUTES_MAP } from '../../utils/routesMap';
 
-import './SavedNews.css';
-
 const name = 'Грета';
 function SavedNews() {
   return (

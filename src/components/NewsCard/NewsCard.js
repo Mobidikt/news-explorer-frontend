@@ -2,9 +2,14 @@ import React from 'react';
 import './NewsCard.css';
 import image from '../../images/image_08.png';
 import { useLocation } from 'react-router-dom';
+import { ROUTES_MAP } from '../../utils/routesMap';
 
+const TEXT_DELETE = 'Убрать из сохраненных';
+const TEXT_INFO = `Войдите, чтобы сохранять статьи`;
+const user = false;
 function NewsCard() {
   const { pathname } = useLocation();
+  const main = pathname === ROUTES_MAP.MAIN ? true : false;
   const classButton =
     pathname === '/' ? 'card-news__button' : 'card-saved-news__button';
   return (
@@ -22,8 +27,10 @@ function NewsCard() {
         </p>
         <p className='card__source'>Медуза</p>
       </div>
-      <div className={`card__button ${classButton}`}></div>
-      <p className='card__origin'>Природа</p>
+      <div className={`card__button ${classButton}`}>
+        <span className='card__informer'>{user ? TEXT_DELETE : TEXT_INFO}</span>
+      </div>
+      {main ? '' : <p className='card__origin'>Природа</p>}
     </div>
   );
 }
