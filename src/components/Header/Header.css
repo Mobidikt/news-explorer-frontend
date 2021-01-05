@@ -1,0 +1,117 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 104px;
+  color: #ffffff;
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.01);
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+}
+.header__container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.header__logo {
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+}
+.header_black {
+  border-bottom: 1px solid #d1d2d6;
+  box-shadow: inset 0px -1px 0px #d1d2d6;
+}
+.header_background-black {
+  background-color: #1a1b22;
+}
+
+.header__menu {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.header__button_menu-mobile {
+  height: 24px;
+  width: 24px;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  display: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger__line {
+  transition: all 0.3s ease-in;
+  top: calc(50% - 2px);
+  left: 0;
+}
+.hamburger__line,
+.hamburger__line:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  background-color: #ffffff;
+  width: 100%;
+  height: 2px;
+  margin-top: 5px;
+}
+.hamburger__line_blak,
+.hamburger__line_blak:after {
+  background-color: #000000;
+}
+.hamburger__line:after {
+  top: -13px;
+  left: 0;
+  transition: all 0.3s ease-in;
+}
+.hamburger__line_active {
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+  margin-top: 0;
+}
+.hamburger__line_active:after {
+  top: -5px;
+  transform: rotate(-90deg);
+  transition: all 0.3s ease-in;
+}
+.header__logo_black {
+  color: #1a1b22;
+}
+.header__button_black {
+  border-color: #1a1b22;
+}
+@media screen and (max-width: 1000px) {
+  .header {
+    padding: 0 40px;
+    height: 66px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .header__button_menu-mobile {
+    display: block;
+  }
+  .header__menu {
+    display: none;
+  }
+}
+@media screen and (max-width: 550px) {
+  .header {
+    padding: 0 16px;
+    height: 56px;
+  }
+}
