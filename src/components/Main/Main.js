@@ -6,9 +6,12 @@ import Preloader from '../Preloader/Preloader.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 
 function Main({ openInfoTooltip, openPopupLogin }) {
+  const searchArticle = (search) => {
+    console.log(search);
+  };
   return (
     <main>
-      <SearchForm />
+      <SearchForm searchArticle={searchArticle} />
       <NewsCardList />
       {/* <Preloader />
       <NotFoundSearch /> */}

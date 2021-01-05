@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm(props) {
+function SearchForm({ searchArticle }) {
+  const [search, setSearch] = useState('');
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchArticle(search);
+    setSearch('');
+  };
   return (
     <section className='search-form'>
       <div className='search-form__container'>
@@ -19,9 +28,15 @@ function SearchForm(props) {
             type='text'
             className='search-form__input'
             placeholder='Введите тему новости'
+            value={search}
+            onChange={handleSearchChange}
             required
           />
-          <button className='search-form__button' type='submit'>
+          <button
+            className='search-form__button'
+            type='submit'
+            onClick={handleSubmit}
+          >
             Искать
           </button>
         </form>
