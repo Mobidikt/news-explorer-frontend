@@ -8,20 +8,40 @@ function Footer() {
       <Route path='/404' exact />
       <Route path='*'>
         <footer className='footer'>
-          <p className='footer__copyright'>
-            &copy; 2020 Supersite, Powered by News API
-          </p>
-          <div className='footer__info'>
-            <Link className='footer__link' to='/'>
-              Главная
-            </Link>
-            <a className='footer__link' href='https://praktikum.yandex.ru/'>
-              Яндекс.Практикум
-            </a>
-            <a
-              className='footer__link footer__link_git'
-              href='https://github.com/Mobidikt'
-            ></a>
+          <div className='footer__container'>
+            <p className='footer__copyright'>
+              &copy; 2020 Supersite, Powered by News API
+            </p>
+            <div className='footer__menu'>
+              <div className='footer__links'>
+                <Link className='footer__link' to='/'>
+                  Главная
+                </Link>
+                <a
+                  target='__blank'
+                  className='footer__link'
+                  href='https://praktikum.yandex.ru/'
+                >
+                  Яндекс.Практикум
+                </a>
+              </div>
+              <div className='footer__social'>
+                <a
+                  target='__blank'
+                  className='footer__link '
+                  href='https://github.com/Mobidikt'
+                >
+                  <i className='footer__link_git' />
+                </a>
+                <a
+                  target='__blank'
+                  className='footer__link'
+                  href='https://www.strava.com/athletes/41677348'
+                >
+                  <i className='footer__link_strava' />
+                </a>
+              </div>
+            </div>
           </div>
         </footer>
       </Route>
