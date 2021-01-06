@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 import './NewsCardList.css';
 
-function NewsCardList() {
+function NewsCardList({ cardsArray }) {
+  console.log(cardsArray);
   const { pathname } = useLocation();
   const main = pathname === '/' ? true : false;
   return (
@@ -16,15 +17,11 @@ function NewsCardList() {
         {main ? <h3 className='card-list__title'>Результаты поиска</h3> : ''}
 
         <ul className='card-list__list'>
-          <li className='card-list__item'>
-            <NewsCard />
-          </li>
-          <li className='card-list__item'>
-            <NewsCard />
-          </li>
-          <li className='card-list__item'>
-            <NewsCard />
-          </li>
+          {cardsArray.map((card) => (
+            <li className='card-list__item'>
+              <NewsCard card={card} />
+            </li>
+          ))}
         </ul>
         <button className='card-list__button'>Показать ещё</button>
       </div>
