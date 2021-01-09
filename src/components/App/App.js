@@ -5,6 +5,7 @@ import '../../vendor/fonts/fonts.css';
 import RegistrationPopup from '../Popups/RegistrationPopup/RegistrationPopup';
 import InfoTooltip from '../Popups/InfoTooltip/InfoTooltip';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import { getArticles } from '../../utils/NewsApi.js';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../Popups/LoginPopup/LoginPopup';
@@ -16,6 +17,8 @@ function App() {
   const [popupLoginOpen, setPopupLoginOpen] = useState(false);
   const [popupRegistrationOpen, setPopupRegistrationOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchResultArray, setSearchResultArray] = useState([]);
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
@@ -57,6 +60,21 @@ function App() {
   const handleRegister = (name, password, email) => {
     openInfoTooltip();
   };
+  const searchArticle = (search) => {
+    setIsLoading(true);
+    setSearchResultArray([]);
+    getArticles(search)
+      .then((res) => {
+        setSearchResultArray(res.articles);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+    console.log(search);
+  };
   return (
     <div className='App'>
       <Header
@@ -67,10 +85,17 @@ function App() {
       />
       <Switch>
         <Route path='/' exact>
-          <Main />
+          <Main
+            searchArticle={searchArticle}
+            isLoading={isLoading}
+            searchResultArray={searchResultArray}
+          />
         </Route>
         <Route path='/saved-news'>
-          <SavedNews />
+          <SavedNews
+            isLoading={isLoading}
+            searchResultArray={searchResultArray}
+          />
         </Route>
         <Route path='/404' exact>
           <NotFound />

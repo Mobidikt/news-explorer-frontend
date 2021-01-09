@@ -1,6 +1,5 @@
 import React from 'react';
 import './NewsCard.css';
-import image from '../../images/image_08.png';
 import { useLocation } from 'react-router-dom';
 import { ROUTES_MAP } from '../../utils/routesMap';
 

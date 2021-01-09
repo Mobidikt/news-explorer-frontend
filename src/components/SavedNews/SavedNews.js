@@ -4,11 +4,11 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 // import { ROUTES_MAP } from '../../utils/routesMap';
 
 const name = 'Грета';
-function SavedNews() {
+function SavedNews({ isLoading, searchResultArray }) {
   return (
     <main>
       <SavedNewsHeader name={name} />
-      <NewsCardList />
+      <NewsCardList cardsArray={searchResultArray} />
     </main>
   );
 }
