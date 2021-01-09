@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FormPopup from '../FormPopup/FormPopup';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-function LoginPopup({ onClose, open, switchPopup }) {
+function LoginPopup({ onClose, open, switchPopup, login }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,10 +18,10 @@ function LoginPopup({ onClose, open, switchPopup }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // props.onAddPlace({
-    //   name: name,
-    //   link: link,
-    // });
+    login({
+      email: email,
+      password: password,
+    });
   };
 
   return (

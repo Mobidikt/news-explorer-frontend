@@ -12,7 +12,7 @@
 .card__image {
   height: 272px;
   width: 100%;
-  object-fit: contain;
+  object-fit: fill;
   margin-bottom: 14px;
 }
 .card__info {

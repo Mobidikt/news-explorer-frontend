@@ -1,8 +1,7 @@
 import React from 'react';
 import './Navigation.css';
 
-function Navigation({ mainLocation, openPopupLogin, user }) {
-  const exit = () => {};
+function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
   return (
     <nav className='nav'>
       <ul className='nav__list'>
@@ -16,16 +15,20 @@ function Navigation({ mainLocation, openPopupLogin, user }) {
             Главная
           </a>
         </li>
-        <li className='nav__item'>
-          <a
-            className={`nav__item_link ${
-              mainLocation ? `` : `nav__item_active nav__item_black `
-            }`}
-            href='/saved-news'
-          >
-            Сохранённые статьи
-          </a>
-        </li>
+        {isLogin ? (
+          <li className='nav__item'>
+            <a
+              className={`nav__item_link ${
+                mainLocation ? `` : `nav__item_active nav__item_black `
+              }`}
+              href='/saved-news'
+            >
+              Сохранённые статьи
+            </a>
+          </li>
+        ) : (
+          <></>
+        )}
         <li className='nav__item'>
           {user ? (
             <button
@@ -33,7 +36,7 @@ function Navigation({ mainLocation, openPopupLogin, user }) {
                 mainLocation ? `` : `nav__button_black`
               }`}
             >
-              Грета
+              {user}
               <i className='nav__exit' onClick={exit}></i>
             </button>
           ) : (

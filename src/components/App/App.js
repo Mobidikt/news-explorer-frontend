@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import '../../vendor/fonts/fonts.css';
 import RegistrationPopup from '../Popups/RegistrationPopup/RegistrationPopup';
 import InfoTooltip from '../Popups/InfoTooltip/InfoTooltip';
-import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import { getArticles } from '../../utils/NewsApi.js';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../Popups/LoginPopup/LoginPopup';
 import NotFound from '../NotFound/NotFound';
+import api from '../../utils/MainApi';
 
 function App() {
+  const history = useHistory();
   const { pathname } = useLocation();
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [popupLoginOpen, setPopupLoginOpen] = useState(false);
   const [popupRegistrationOpen, setPopupRegistrationOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
   const [searchResultArray, setSearchResultArray] = useState([]);
+  const [name, setName] = useState('');
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
@@ -41,7 +51,6 @@ function App() {
     setPopupRegistrationOpen(true);
     setEventListeners();
   };
-
   const openPopupLogin = () => {
     setPopupLoginOpen(true);
     setEventListeners();
@@ -54,13 +63,80 @@ function App() {
     document.removeEventListener('click', overlayClose);
   };
   const exit = () => {
+    localStorage.removeItem('jwt');
+    setName('');
+    // setCurrentUser('');
+    history.push('/');
     setIsLogin(false);
   };
-  const handleLogin = () => {};
-  const handleRegister = (name, password, email) => {
-    openInfoTooltip();
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      api
+        .getToken(jwt)
+        .then((res) => {
+          //  setCurrentUser(res);
+          setIsLogin(true);
+          setName(res.name);
+          console.log(res);
+        })
+        .catch((err) => {
+          if (err === 401) {
+            console.log('Переданный токен некорректен');
+          } else {
+            console.log(`Ошибка: ${err}`);
+          }
+        });
+    }
+  }, [isLogin]);
+  const handleLogin = ({ email, password }) => {
+    api
+      .login({ email, password })
+      .then((res) => {
+        localStorage.setItem('jwt', res.token);
+        api
+          .getToken(res.token)
+          .then((res) => {
+            setIsLogin(true);
+            setName(res.name);
+            console.log(res);
+          })
+          .catch((err) => {
+            if (err === 401) {
+              console.log('Переданный токен некорректен');
+            } else {
+              console.log(`Ошибка: ${err}`);
+            }
+            // setIconPopup(false);
+            // setInfoTooltipOpen(true);
+            // setEventListeners();
+          });
+        closeAllPopups();
+      })
+      .catch((err) => {
+        if (err === 400) {
+          return console.log('Не передано одно из полей');
+        }
+        if (err === 401) {
+          return console.log('Пользователь с email не найден');
+        } else {
+          return console.log(`Ошибка: ${err}`);
+        }
+      });
+  };
+  const handleRegister = ({ name, password, email }) => {
+    api
+      .register({ name, password, email })
+      .then((res) => {
+        console.log(res);
+        openInfoTooltip();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const searchArticle = (search) => {
+    setIsSearch(false);
     setIsLoading(true);
     setSearchResultArray([]);
     getArticles(search)
@@ -71,13 +147,14 @@ function App() {
         console.log(err);
       })
       .finally(() => {
+        setIsSearch(true);
         setIsLoading(false);
       });
-    console.log(search);
   };
   return (
     <div className='App'>
       <Header
+        name={name}
         location={pathname}
         openPopupLogin={openPopupLogin}
         isLogin={isLogin}
@@ -86,6 +163,7 @@ function App() {
       <Switch>
         <Route path='/' exact>
           <Main
+            isSearch={isSearch}
             searchArticle={searchArticle}
             isLoading={isLoading}
             searchResultArray={searchResultArray}
@@ -118,7 +196,11 @@ function App() {
         switchPopup={openPopupLogin}
         registration={handleRegister}
       />
-      <InfoTooltip open={infoTooltipOpen} onClose={closeAllPopups} />
+      <InfoTooltip
+        open={infoTooltipOpen}
+        onClose={closeAllPopups}
+        openPopupLogin={openPopupLogin}
+      />
     </div>
   );
 }
