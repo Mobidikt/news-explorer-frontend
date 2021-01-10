@@ -2,7 +2,7 @@ import React from 'react';
 import pluralize from '../../utils/pluralize';
 import './SavedNewsHeader.css';
 
-function SavedNewsHeader({ name }) {
+function SavedNewsHeader({ name, userCards }) {
   const config = {
     zero: ', у вас нет сохраненных статей',
     one: ', у вас {} сохраненная статья',
@@ -17,7 +17,7 @@ function SavedNewsHeader({ name }) {
         <p className='saved-news-header__name'>Сохраненные статьи</p>
         <h1 className='saved-news-header__title'>
           {name}
-          {pluralize(5, config)}
+          {pluralize(userCards.length, config)}
         </h1>
         <p className='saved-news-header__info'>
           По ключевым словам:

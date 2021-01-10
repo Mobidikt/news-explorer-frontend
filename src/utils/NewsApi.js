@@ -17,7 +17,6 @@ export const getArticles = (searchRequest) => {
     `to=${week}` +
     '&' +
     `pageSize=${NEWS_API.PAGE_SIZE}`;
-  console.log(URL);
   return fetch(URL, {
     method: 'GET',
     headers: {

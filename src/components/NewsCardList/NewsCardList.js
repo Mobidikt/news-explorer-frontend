@@ -4,7 +4,7 @@ import { ROUTES_MAP } from '../../utils/routesMap';
 import NewsCard from '../NewsCard/NewsCard';
 import './NewsCardList.css';
 
-function NewsCardList({ cardsArray }) {
+function NewsCardList({ cardsArray, isLogin, addCard, deleteCard }) {
   const { pathname } = useLocation();
   const main = pathname === ROUTES_MAP.MAIN ? true : false;
   const [countCards, setCountCards] = useState(3);
@@ -27,7 +27,12 @@ function NewsCardList({ cardsArray }) {
             <ul className='card-list__list'>
               {cardsArray.slice(0, countCards).map((card) => (
                 <li className='card-list__item' key={card.title}>
-                  <NewsCard card={card} main={main} />
+                  <NewsCard
+                    card={card}
+                    main={main}
+                    isLogin={isLogin}
+                    addCard={addCard}
+                  />
                 </li>
               ))}
             </ul>
@@ -43,7 +48,12 @@ function NewsCardList({ cardsArray }) {
           <ul className='card-list__list'>
             {cardsArray.map((card) => (
               <li className='card-list__item' key={card.title}>
-                <NewsCard card={card} main={main} />
+                <NewsCard
+                  card={card}
+                  main={main}
+                  isLogin={isLogin}
+                  deleteCard={deleteCard}
+                />
               </li>
             ))}
           </ul>

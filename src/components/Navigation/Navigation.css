@@ -40,6 +40,9 @@
   border-color: #1a1b22;
 }
 .nav__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
   padding: 12px 18px;

@@ -6,7 +6,14 @@ import NotFoundSearch from '../NotFoundSearch/NotFoundSearch.js';
 import Preloader from '../Preloader/Preloader.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 
-function Main({ isSearch, searchArticle, isLoading, searchResultArray }) {
+function Main({
+  isSearch,
+  searchArticle,
+  isLoading,
+  searchResultArray,
+  isLogin,
+  addCard,
+}) {
   return (
     <main>
       <SearchForm searchArticle={searchArticle} />
@@ -15,7 +22,11 @@ function Main({ isSearch, searchArticle, isLoading, searchResultArray }) {
         searchResultArray.length === 0 ? (
           <NotFoundSearch />
         ) : (
-          <NewsCardList cardsArray={searchResultArray} />
+          <NewsCardList
+            addCard={addCard}
+            isLogin={isLogin}
+            cardsArray={searchResultArray}
+          />
         )
       ) : (
         <></>

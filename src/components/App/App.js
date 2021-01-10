@@ -28,6 +28,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchResultArray, setSearchResultArray] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState('');
   const [name, setName] = useState('');
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
@@ -69,6 +70,7 @@ function App() {
     history.push('/');
     setIsLogin(false);
   };
+  console.log(isLogin);
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -78,7 +80,6 @@ function App() {
           //  setCurrentUser(res);
           setIsLogin(true);
           setName(res.name);
-          console.log(res);
         })
         .catch((err) => {
           if (err === 401) {
@@ -99,7 +100,6 @@ function App() {
           .then((res) => {
             setIsLogin(true);
             setName(res.name);
-            console.log(res);
           })
           .catch((err) => {
             if (err === 401) {
@@ -124,6 +124,7 @@ function App() {
         }
       });
   };
+
   const handleRegister = ({ name, password, email }) => {
     api
       .register({ name, password, email })
@@ -141,6 +142,7 @@ function App() {
     setSearchResultArray([]);
     getArticles(search)
       .then((res) => {
+        setSearchKeyword(search);
         setSearchResultArray(res.articles);
       })
       .catch((err) => {
@@ -149,6 +151,38 @@ function App() {
       .finally(() => {
         setIsSearch(true);
         setIsLoading(false);
+      });
+  };
+  const addCard = (card) => {
+    const info = {
+      keyword: searchKeyword,
+      title: card.title,
+      text: card.description,
+      date: card.publishedAt,
+      source: card.source.name,
+      link: card.url,
+      image: card.urlToImage,
+    };
+    const jwt = localStorage.getItem('jwt');
+    api
+      .createCard(info, jwt)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const deleteCard = (cardId) => {
+    const jwt = localStorage.getItem('jwt');
+
+    api
+      .deleteCard(cardId, jwt)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
@@ -163,14 +197,19 @@ function App() {
       <Switch>
         <Route path='/' exact>
           <Main
+            addCard={addCard}
             isSearch={isSearch}
             searchArticle={searchArticle}
             isLoading={isLoading}
+            isLogin={isLogin}
             searchResultArray={searchResultArray}
           />
         </Route>
         <Route path='/saved-news'>
           <SavedNews
+            deleteCard={deleteCard}
+            isLogin={isLogin}
+            name={name}
             isLoading={isLoading}
             searchResultArray={searchResultArray}
           />
