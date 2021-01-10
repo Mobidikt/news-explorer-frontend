@@ -13,6 +13,9 @@ function Main({
   searchResultArray,
   isLogin,
   addCard,
+  userCards,
+  deleteCard,
+  openPopupLogin,
 }) {
   return (
     <main>
@@ -23,7 +26,10 @@ function Main({
           <NotFoundSearch />
         ) : (
           <NewsCardList
+            openPopupLogin={openPopupLogin}
+            userCards={userCards}
             addCard={addCard}
+            deleteCard={deleteCard}
             isLogin={isLogin}
             cardsArray={searchResultArray}
           />

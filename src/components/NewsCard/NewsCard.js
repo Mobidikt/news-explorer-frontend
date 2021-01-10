@@ -2,20 +2,42 @@ import React from 'react';
 import './NewsCard.css';
 
 const TEXT_DELETE = 'Убрать из сохраненных';
+const TEXT_ADD = 'Сохранить статью';
 const TEXT_INFO = `Войдите, чтобы сохранять статьи`;
-function NewsCard({ card, main, isLogin, addCard, deleteCard }) {
+function NewsCard({
+  card,
+  main,
+  isLogin,
+  addCard,
+  deleteCard,
+  userCards,
+  openPopupLogin,
+}) {
   const date = new Date(main ? card.publishedAt : card.date);
   const fullDate = `${date.toLocaleString('ru', {
     day: 'numeric',
     month: 'long',
   })}, ${date.getFullYear()}`;
-  const clickCard = () => {
+  const cardAdd = () => {
     addCard(card);
   };
   const cardDelete = () => {
-    deleteCard(card._id);
+    main
+      ? userCards.some((userCard) => {
+          if (userCard.title === card.title) {
+            deleteCard(userCard._id);
+          }
+        })
+      : deleteCard(card._id);
   };
-  const classButton = main ? 'card-news__button' : 'card-saved-news__button';
+
+  const classButton = main
+    ? isLogin
+      ? userCards.some((i) => i.title === card.title)
+        ? 'card-news__button_active'
+        : 'card-news__button'
+      : 'card-news__button'
+    : 'card-saved-news__button';
   return (
     <div className='card'>
       <img
@@ -31,10 +53,24 @@ function NewsCard({ card, main, isLogin, addCard, deleteCard }) {
       </div>
       <div
         className={`card__button ${classButton}`}
-        onClick={main ? clickCard : cardDelete}
+        onClick={
+          main
+            ? isLogin
+              ? userCards.some((i) => i.title === card.title)
+                ? cardDelete
+                : cardAdd
+              : openPopupLogin
+            : cardDelete
+        }
       >
         <span className='card__informer'>
-          {isLogin ? TEXT_DELETE : TEXT_INFO}
+          {main
+            ? isLogin
+              ? userCards.some((i) => i.title === card.title)
+                ? TEXT_DELETE
+                : TEXT_ADD
+              : TEXT_INFO
+            : TEXT_DELETE}
         </span>
       </div>
       {main ? <></> : <p className='card__origin'>{card.keyword}</p>}

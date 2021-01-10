@@ -17,10 +17,13 @@ import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../Popups/LoginPopup/LoginPopup';
 import NotFound from '../NotFound/NotFound';
 import api from '../../utils/MainApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
   const history = useHistory();
   const { pathname } = useLocation();
+  const [currentUser, setCurrentUser] = useState('');
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [popupLoginOpen, setPopupLoginOpen] = useState(false);
   const [popupRegistrationOpen, setPopupRegistrationOpen] = useState(false);
@@ -30,6 +33,7 @@ function App() {
   const [searchResultArray, setSearchResultArray] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState('');
   const [name, setName] = useState('');
+  const [userCards, setUserCards] = useState([]);
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
@@ -66,18 +70,17 @@ function App() {
   const exit = () => {
     localStorage.removeItem('jwt');
     setName('');
-    // setCurrentUser('');
+    setCurrentUser('');
     history.push('/');
     setIsLogin(false);
   };
-  console.log(isLogin);
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       api
         .getToken(jwt)
         .then((res) => {
-          //  setCurrentUser(res);
+          setCurrentUser(res);
           setIsLogin(true);
           setName(res.name);
         })
@@ -89,7 +92,7 @@ function App() {
           }
         });
     }
-  }, [isLogin]);
+  }, [history]);
   const handleLogin = ({ email, password }) => {
     api
       .login({ email, password })
@@ -107,9 +110,6 @@ function App() {
             } else {
               console.log(`Ошибка: ${err}`);
             }
-            // setIconPopup(false);
-            // setInfoTooltipOpen(true);
-            // setEventListeners();
           });
         closeAllPopups();
       })
@@ -166,8 +166,8 @@ function App() {
     const jwt = localStorage.getItem('jwt');
     api
       .createCard(info, jwt)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        getUserCards();
       })
       .catch((err) => {
         console.log(err);
@@ -178,69 +178,99 @@ function App() {
 
     api
       .deleteCard(cardId, jwt)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        getUserCards();
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  const getUserCards = () => {
+    const jwt = localStorage.getItem('jwt');
+    api
+      .getInitialCards(jwt)
+      .then((res) => {
+        setUserCards(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    if (isLogin) {
+      const jwt = localStorage.getItem('jwt');
+      api
+        .getInitialCards(jwt)
+        .then((res) => {
+          setUserCards(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isLogin, history]);
   return (
-    <div className='App'>
-      <Header
-        name={name}
-        location={pathname}
-        openPopupLogin={openPopupLogin}
-        isLogin={isLogin}
-        exit={exit}
-      />
-      <Switch>
-        <Route path='/' exact>
-          <Main
-            addCard={addCard}
-            isSearch={isSearch}
-            searchArticle={searchArticle}
-            isLoading={isLoading}
-            isLogin={isLogin}
-            searchResultArray={searchResultArray}
-          />
-        </Route>
-        <Route path='/saved-news'>
-          <SavedNews
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className='App'>
+        <Header
+          name={name}
+          location={pathname}
+          openPopupLogin={openPopupLogin}
+          isLogin={isLogin}
+          exit={exit}
+        />
+        <Switch>
+          <Route path='/' exact>
+            <Main
+              openPopupLogin={openPopupLogin}
+              userCards={userCards}
+              addCard={addCard}
+              isSearch={isSearch}
+              searchArticle={searchArticle}
+              isLoading={isLoading}
+              isLogin={isLogin}
+              deleteCard={deleteCard}
+              searchResultArray={searchResultArray}
+            />
+          </Route>
+          <ProtectedRoute
+            path='/saved-news'
+            component={SavedNews}
+            userCards={userCards}
             deleteCard={deleteCard}
             isLogin={isLogin}
             name={name}
             isLoading={isLoading}
             searchResultArray={searchResultArray}
           />
-        </Route>
-        <Route path='/404' exact>
-          <NotFound />
-        </Route>
-        <Route path='*'>
-          <Redirect to='/404' />
-        </Route>
-      </Switch>
+          <Route path='/404' exact>
+            <NotFound />
+          </Route>
+          <Route path='*'>
+            <Redirect to='/404' />
+          </Route>
+        </Switch>
 
-      <Footer />
-      <LoginPopup
-        open={popupLoginOpen}
-        onClose={closeAllPopups}
-        switchPopup={openPopupRegistration}
-        login={handleLogin}
-      />
-      <RegistrationPopup
-        open={popupRegistrationOpen}
-        onClose={closeAllPopups}
-        switchPopup={openPopupLogin}
-        registration={handleRegister}
-      />
-      <InfoTooltip
-        open={infoTooltipOpen}
-        onClose={closeAllPopups}
-        openPopupLogin={openPopupLogin}
-      />
-    </div>
+        <Footer />
+        <LoginPopup
+          open={popupLoginOpen}
+          onClose={closeAllPopups}
+          switchPopup={openPopupRegistration}
+          login={handleLogin}
+        />
+        <RegistrationPopup
+          open={popupRegistrationOpen}
+          onClose={closeAllPopups}
+          switchPopup={openPopupLogin}
+          registration={handleRegister}
+        />
+        <InfoTooltip
+          open={infoTooltipOpen}
+          onClose={closeAllPopups}
+          openPopupLogin={openPopupLogin}
+        />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

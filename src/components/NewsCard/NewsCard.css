@@ -40,7 +40,7 @@
 .card-news__button:hover {
   background-image: url(../../images/card/bookmark_hover.svg);
 }
-.card-news__button:active {
+.card-news__button_active {
   background-image: url(../../images/card/bookmark_active.svg);
 }
 .card-saved-news__button {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
@@ -6,25 +7,25 @@ function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
     <nav className='nav'>
       <ul className='nav__list'>
         <li className='nav__item'>
-          <a
+          <NavLink
             className={`nav__item_link ${
               mainLocation ? `nav__item_active ` : `nav__item_black`
             }`}
-            href='/'
+            to='/'
           >
             Главная
-          </a>
+          </NavLink>
         </li>
         {isLogin ? (
           <li className='nav__item'>
-            <a
+            <NavLink
               className={`nav__item_link ${
                 mainLocation ? `` : `nav__item_active nav__item_black `
               }`}
-              href='/saved-news'
+              to='/saved-news'
             >
               Сохранённые статьи
-            </a>
+            </NavLink>
           </li>
         ) : (
           <></>
