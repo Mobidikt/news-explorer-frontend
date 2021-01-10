@@ -10,5 +10,5 @@ export const NEWS_API = {
   KEY: '6ad5413985fd4210b99d03bc112e5ece',
   PAGE_SIZE: 100,
 };
-export const SERVER_URL =
+export const MAIN_API =
   'https://www.api.mobidiktdiplom.students.nomoreparties.space';

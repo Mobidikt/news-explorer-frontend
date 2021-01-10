@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { ROUTES_MAP } from '../../utils/routesMap';
 import './Navigation.css';
 
 function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
@@ -11,7 +12,7 @@ function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
             className={`nav__item_link ${
               mainLocation ? `nav__item_active ` : `nav__item_black`
             }`}
-            to='/'
+            to={ROUTES_MAP.MAIN}
           >
             Главная
           </NavLink>
@@ -22,7 +23,7 @@ function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
               className={`nav__item_link ${
                 mainLocation ? `` : `nav__item_active nav__item_black `
               }`}
-              to='/saved-news'
+              to={ROUTES_MAP.SAVED_NEWS}
             >
               Сохранённые статьи
             </NavLink>

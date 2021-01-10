@@ -12,6 +12,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { getArticles } from '../../utils/NewsApi.js';
+import { ROUTES_MAP } from '../../utils/routesMap';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../Popups/LoginPopup/LoginPopup';
@@ -71,7 +72,7 @@ function App() {
     localStorage.removeItem('jwt');
     setName('');
     setCurrentUser('');
-    history.push('/');
+    history.push(ROUTES_MAP.MAIN);
     setIsLogin(false);
   };
   useEffect(() => {

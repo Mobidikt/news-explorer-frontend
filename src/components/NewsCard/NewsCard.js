@@ -1,9 +1,7 @@
 import React from 'react';
+import { TEXT_ADD, TEXT_DELETE, TEXT_INFO } from '../../utils/config';
 import './NewsCard.css';
 
-const TEXT_DELETE = 'Убрать из сохраненных';
-const TEXT_ADD = 'Сохранить статью';
-const TEXT_INFO = `Войдите, чтобы сохранять статьи`;
 function NewsCard({
   card,
   main,

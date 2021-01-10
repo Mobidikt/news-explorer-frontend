@@ -1,4 +1,4 @@
-import { SERVER_URL } from './routesMap';
+import { MAIN_API } from './routesMap';
 
 class Api {
   constructor({ serverUrl }) {
@@ -100,36 +100,8 @@ class Api {
       },
     });
   }
-  //  Реализация лайка
-  //   createLike(cardId, jwt) {
-  //     return this._fetch(`/cards/likes/${cardId}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         authorization: `Bearer ${jwt}`,
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //   }
-  //   deleteLike(cardId, jwt) {
-  //     return this._fetch(`/cards/likes/${cardId}`, {
-  //       method: 'DELETE',
-  //       headers: {
-  //         authorization: `Bearer ${jwt}`,
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //   }
-  //   changeLikeCardStatus(cardId, isLiked, jwt) {
-  //     return this._fetch(`/cards/likes/${cardId}`, {
-  //       method: isLiked ? 'PUT' : 'DELETE',
-  //       headers: {
-  //         authorization: `Bearer ${jwt}`,
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //   }
 }
 const api = new Api({
-  serverUrl: SERVER_URL,
+  serverUrl: MAIN_API,
 });
 export default api;
