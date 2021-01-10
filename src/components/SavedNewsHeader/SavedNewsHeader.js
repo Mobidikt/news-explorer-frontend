@@ -9,7 +9,6 @@ function SavedNewsHeader({ name, userCards }) {
   const keywordsArr = useMemo(() => {
     return countKeyword(userCards);
   }, [userCards]);
-  console.log(userCards.length);
   return (
     <section className='saved-news-header'>
       <div className='saved-news-header__container'>

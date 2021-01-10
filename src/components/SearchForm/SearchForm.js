@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SearchForm.css';
 
 function SearchForm({ searchArticle }) {
@@ -7,6 +7,12 @@ function SearchForm({ searchArticle }) {
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
+  useEffect(
+    function validateSearch() {
+      if (search.length > 0) setSearchError('');
+    },
+    [search],
+  );
   const handleSubmit = (e) => {
     e.preventDefault();
     if (search.length === 0) {
