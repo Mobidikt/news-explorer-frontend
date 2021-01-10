@@ -3,13 +3,18 @@ import './SearchForm.css';
 
 function SearchForm({ searchArticle }) {
   const [search, setSearch] = useState('');
+  const [searchError, setSearchError] = useState('');
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchArticle(search);
-    setSearch('');
+    if (search.length === 0) {
+      setSearchError('search-form__error_open');
+    } else {
+      searchArticle(search);
+      setSearch('');
+    }
   };
   return (
     <section className='search-form'>
@@ -40,7 +45,7 @@ function SearchForm({ searchArticle }) {
             Искать
           </button>
         </form>
-        <span className={`search-form__error `}>
+        <span className={`search-form__error ${searchError}`}>
           Нужно ввести ключевое слово
         </span>
       </div>

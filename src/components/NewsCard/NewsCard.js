@@ -1,5 +1,6 @@
 import React from 'react';
 import { TEXT_ADD, TEXT_DELETE, TEXT_INFO } from '../../utils/config';
+import { ucFirst } from '../../utils/ucFirst';
 import './NewsCard.css';
 
 function NewsCard({
@@ -71,7 +72,7 @@ function NewsCard({
             : TEXT_DELETE}
         </span>
       </div>
-      {main ? <></> : <p className='card__origin'>{card.keyword}</p>}
+      {main ? <></> : <p className='card__origin'>{ucFirst(card.keyword)}</p>}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ROUTES_MAP } from '../../utils/routesMap';
+import { ucFirst } from '../../utils/ucFirst';
 import './Navigation.css';
 
 function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
@@ -38,7 +39,7 @@ function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
                 mainLocation ? `` : `nav__button_black`
               }`}
             >
-              {user}
+              {ucFirst(user)}
               <i className='nav__exit' onClick={exit}></i>
             </button>
           ) : (
