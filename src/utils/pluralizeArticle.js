@@ -1,4 +1,7 @@
-export default function pluralize(n, { zero, one, few, many, radix, fewMax }) {
+export default function pluralizeArticles(
+  n,
+  { zero, one, few, many, radix, fewMax },
+) {
   const order = n.toString().length; // порядок числа
   const mod = Math.abs(n) % radix;
   let pattern;

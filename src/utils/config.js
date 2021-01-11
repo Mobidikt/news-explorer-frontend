@@ -1,10 +1,20 @@
-export const pluralizeConfig = {
+export const pluralizeConfigArticles = {
   zero: ', у вас нет сохраненных статей',
   one: ', у вас {} сохраненная статья',
   few: ', у вас {} сохраненные статьи',
   many: ', у вас {} сохраненных статей',
   radix: 10,
   fewMax: 4,
+};
+export const pluralizeConfigKeyword = {
+  one: '{}-го другого',
+  two: '{}-м другим',
+  five: '{}-ти другим',
+  seven: '{}-ми другим',
+  radix: 10,
+  twoMax: 4,
+  fiveMax: 6,
+  sevenMax: 8,
 };
 export const TEXT_DELETE = 'Убрать из сохраненных';
 export const TEXT_ADD = 'Сохранить статью';

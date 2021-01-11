@@ -1,7 +1,11 @@
 import React, { useMemo } from 'react';
-import { pluralizeConfig } from '../../utils/config';
+import {
+  pluralizeConfigArticles,
+  pluralizeConfigKeyword,
+} from '../../utils/config';
 import { countKeyword } from '../../utils/countKeywords';
-import pluralize from '../../utils/pluralize';
+import pluralizeArticles from '../../utils/pluralizeArticle';
+import pluralizeKeywords from '../../utils/pluralizeKeyword';
 import { ucFirst } from '../../utils/ucFirst';
 import './SavedNewsHeader.css';
 
@@ -15,7 +19,7 @@ function SavedNewsHeader({ name, userCards }) {
         <p className='saved-news-header__name'>Сохраненные статьи</p>
         <h1 className='saved-news-header__title'>
           {ucFirst(name)}
-          {pluralize(userCards.length, pluralizeConfig)}
+          {pluralizeArticles(userCards.length, pluralizeConfigArticles)}
         </h1>
         {userCards.length > 0 ? (
           <p className='saved-news-header__info'>
@@ -45,8 +49,10 @@ function SavedNewsHeader({ name, userCards }) {
                 </span>{' '}
                 и{' '}
                 <span className='saved-news-header__info_accent'>
-                  {keywordsArr.length - 2}
-                  -м другим
+                  {pluralizeKeywords(
+                    keywordsArr.length - 2,
+                    pluralizeConfigKeyword,
+                  )}
                 </span>
               </>
             )}
