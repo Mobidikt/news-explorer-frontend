@@ -7,8 +7,14 @@ import {
 import FormPopup from '../FormPopup/FormPopup';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-// const open = true;
-function LoginPopup({ onClose, open, switchPopup, login, serverError }) {
+function LoginPopup({
+  onClose,
+  open,
+  switchPopup,
+  login,
+  serverError,
+  isGettingData,
+}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -16,7 +22,7 @@ function LoginPopup({ onClose, open, switchPopup, login, serverError }) {
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
   const [buttonLocked, setButtonLocked] = useState(true);
-
+  const [buttonText, setButtonText] = useState('Войти');
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -58,6 +64,11 @@ function LoginPopup({ onClose, open, switchPopup, login, serverError }) {
       setButtonLocked(false);
     } else setButtonLocked(true);
   }, [passwordValid, emailValid]);
+  useEffect(() => {
+    if (isGettingData) {
+      setButtonText('Входим...');
+    } else setButtonText('Войти');
+  }, [isGettingData]);
   const passing = () => {
     onClose();
     switchPopup();
@@ -75,7 +86,7 @@ function LoginPopup({ onClose, open, switchPopup, login, serverError }) {
       <FormPopup
         name='login'
         onSubmit={handleSubmit}
-        button_text='Войти'
+        button_text={buttonText}
         buttonLocked={buttonLocked}
         serverError={serverError}
       >

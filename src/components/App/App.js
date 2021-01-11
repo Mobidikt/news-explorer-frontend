@@ -145,7 +145,7 @@ function App() {
         setSearchResultArray(res.articles);
       })
       .catch((err) => {
-        err.json().then((res) => setServerError(res.message));
+        console.log(err);
       })
       .finally(() => {
         setIsSearch(true);
@@ -169,7 +169,10 @@ function App() {
         getUserCards();
       })
       .catch((err) => {
-        err.json().then((res) => setServerError(res.message));
+        err.json().then((res) => {
+          console.log(res.message);
+          setServerError(res.message);
+        });
       });
   };
   const deleteCard = (cardId) => {
@@ -181,7 +184,10 @@ function App() {
         getUserCards();
       })
       .catch((err) => {
-        err.json().then((res) => setServerError(res.message));
+        err.json().then((res) => {
+          console.log(res.message);
+          setServerError(res.message);
+        });
       });
   };
   const getUserCards = () => {
@@ -192,7 +198,10 @@ function App() {
         setUserCards(res);
       })
       .catch((err) => {
-        err.json().then((res) => setServerError(res.message));
+        err.json().then((res) => {
+          console.log(res.message);
+          setServerError(res.message);
+        });
       });
   };
   useEffect(() => {
@@ -204,7 +213,10 @@ function App() {
           setUserCards(res);
         })
         .catch((err) => {
-          err.json().then((res) => setServerError(res.message));
+          err.json().then((res) => {
+            console.log(res.message);
+            setServerError(res.message);
+          });
         });
     }
   }, [isLogin, history]);
