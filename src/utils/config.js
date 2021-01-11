@@ -9,3 +9,14 @@ export const pluralizeConfig = {
 export const TEXT_DELETE = 'Убрать из сохраненных';
 export const TEXT_ADD = 'Сохранить статью';
 export const TEXT_INFO = `Войдите, чтобы сохранять статьи`;
+
+export const RegExp_EMAIL = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+
+export const ERROR_EMAIL = {
+  FILLED: 'Введите email',
+  INVALID: 'Неправильный формат email',
+};
+export const ERROR_PASSWORD = {
+  LENGTH: 'Длина пароля должна быть не менее 5 символов',
+  INVALID: 'Пароль не может состоять только из пробелов',
+};

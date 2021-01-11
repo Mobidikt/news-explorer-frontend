@@ -10,7 +10,7 @@ class Api {
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Ошибка: ${res}`);
+      return Promise.reject(res);
     });
   }
   getToken(token) {

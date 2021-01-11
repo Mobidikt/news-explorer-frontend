@@ -76,6 +76,9 @@
   background-repeat: no-repeat;
   background-image: url(../../images/exit.svg);
 }
+.nav__exit_white {
+  background-image: url(../../images/exit_white.svg);
+}
 @media screen and (max-width: 1000px) {
   .nav__item {
     margin-right: 16px;

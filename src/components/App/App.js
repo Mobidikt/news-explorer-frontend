@@ -35,6 +35,8 @@ function App() {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [name, setName] = useState('');
   const [userCards, setUserCards] = useState([]);
+  const [serverError, setServerError] = useState('');
+  const [isGettingData, setIsGettingData] = useState(false);
   const handleEsc = (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
@@ -54,10 +56,12 @@ function App() {
     setEventListeners();
   };
   const openPopupRegistration = () => {
+    setServerError('');
     setPopupRegistrationOpen(true);
     setEventListeners();
   };
   const openPopupLogin = () => {
+    setServerError('');
     setPopupLoginOpen(true);
     setEventListeners();
   };
@@ -86,15 +90,12 @@ function App() {
           setName(res.name);
         })
         .catch((err) => {
-          if (err === 401) {
-            console.log('Переданный токен некорректен');
-          } else {
-            console.log(`Ошибка: ${err}`);
-          }
+          err.json().then((res) => setServerError(res.message));
         });
     }
   }, [history]);
   const handleLogin = ({ email, password }) => {
+    setIsGettingData(true);
     api
       .login({ email, password })
       .then((res) => {
@@ -106,35 +107,32 @@ function App() {
             setName(res.name);
           })
           .catch((err) => {
-            if (err === 401) {
-              console.log('Переданный токен некорректен');
-            } else {
-              console.log(`Ошибка: ${err}`);
-            }
+            err.json().then((res) => {
+              console.log(res.message);
+            });
           });
         closeAllPopups();
       })
       .catch((err) => {
-        if (err === 400) {
-          return console.log('Не передано одно из полей');
-        }
-        if (err === 401) {
-          return console.log('Пользователь с email не найден');
-        } else {
-          return console.log(`Ошибка: ${err}`);
-        }
+        err.json().then((res) => setServerError(res.message));
+      })
+      .finally(() => {
+        setIsGettingData(false);
       });
   };
 
   const handleRegister = ({ name, password, email }) => {
+    setIsGettingData(true);
     api
       .register({ name, password, email })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         openInfoTooltip();
       })
       .catch((err) => {
-        console.log(err);
+        err.json().then((res) => setServerError(res.message));
+      })
+      .finally(() => {
+        setIsGettingData(false);
       });
   };
   const searchArticle = (search) => {
@@ -147,7 +145,7 @@ function App() {
         setSearchResultArray(res.articles);
       })
       .catch((err) => {
-        console.log(err);
+        err.json().then((res) => setServerError(res.message));
       })
       .finally(() => {
         setIsSearch(true);
@@ -171,7 +169,7 @@ function App() {
         getUserCards();
       })
       .catch((err) => {
-        console.log(err);
+        err.json().then((res) => setServerError(res.message));
       });
   };
   const deleteCard = (cardId) => {
@@ -183,7 +181,7 @@ function App() {
         getUserCards();
       })
       .catch((err) => {
-        console.log(err);
+        err.json().then((res) => setServerError(res.message));
       });
   };
   const getUserCards = () => {
@@ -194,7 +192,7 @@ function App() {
         setUserCards(res);
       })
       .catch((err) => {
-        console.log(err);
+        err.json().then((res) => setServerError(res.message));
       });
   };
   useEffect(() => {
@@ -206,7 +204,7 @@ function App() {
           setUserCards(res);
         })
         .catch((err) => {
-          console.log(err);
+          err.json().then((res) => setServerError(res.message));
         });
     }
   }, [isLogin, history]);
@@ -254,12 +252,16 @@ function App() {
 
         <Footer />
         <LoginPopup
+          isGettingData={isGettingData}
+          serverError={serverError}
           open={popupLoginOpen}
           onClose={closeAllPopups}
           switchPopup={openPopupRegistration}
           login={handleLogin}
         />
         <RegistrationPopup
+          isGettingData={isGettingData}
+          serverError={serverError}
           open={popupRegistrationOpen}
           onClose={closeAllPopups}
           switchPopup={openPopupLogin}

@@ -40,7 +40,10 @@ function Navigation({ mainLocation, openPopupLogin, user, isLogin, exit }) {
               }`}
             >
               {ucFirst(user)}
-              <i className='nav__exit' onClick={exit}></i>
+              <i
+                className={`nav__exit ${mainLocation ? `nav__exit_white` : ``}`}
+                onClick={exit}
+              ></i>
             </button>
           ) : (
             <button

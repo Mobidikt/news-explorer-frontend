@@ -29,6 +29,13 @@
 }
 .popup__button_disable {
   cursor: default;
+  box-shadow: none;
+  background: #e6e8eb;
+}
+.popup__button_disable:hover {
+  background: #e6e8eb;
+}
+.popup__button_disable:active {
   background: #e6e8eb;
 }
 .server-error {

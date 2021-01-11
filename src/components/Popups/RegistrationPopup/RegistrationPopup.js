@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import FormPopup from '../FormPopup/FormPopup';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-function RegistrationPopup({ open, onClose, switchPopup, registration }) {
+function RegistrationPopup({
+  open,
+  onClose,
+  switchPopup,
+  registration,
+  serverError,
+}) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -31,6 +37,7 @@ function RegistrationPopup({ open, onClose, switchPopup, registration }) {
 
   return (
     <PopupWithForm
+      serverError={serverError}
       name='registration'
       title='Регистрация'
       onClose={onClose}
@@ -66,7 +73,7 @@ function RegistrationPopup({ open, onClose, switchPopup, registration }) {
             minLength='2'
             id='name'
             required
-            value={name}
+            value={name || ''}
             onChange={handleNameChange}
           />
           <span className='popup__error' id='name-error' />
@@ -79,9 +86,9 @@ function RegistrationPopup({ open, onClose, switchPopup, registration }) {
             placeholder='Введите пароль'
             className='popup__input'
             id='password'
-            minLength='5'
             required
-            value={password}
+            value={password || ''}
+            autoComplete='on'
             onChange={handlePasswordChange}
           />
           <span className='popup__error' id='password-error' />
