@@ -7,7 +7,7 @@ export const pluralizeConfigArticles = {
   fewMax: 4,
 };
 export const pluralizeConfigKeyword = {
-  one: '{}-го другого',
+  one: '{}-му другому',
   two: '{}-м другим',
   five: '{}-ти другим',
   seven: '{}-ми другим',

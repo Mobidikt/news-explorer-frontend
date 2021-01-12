@@ -20,6 +20,7 @@ import NotFound from '../NotFound/NotFound';
 import api from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ErrorPopup from '../Popups/ErrorPopup/ErrorPopup';
 
 function App() {
   const history = useHistory();
@@ -28,6 +29,7 @@ function App() {
   const [infoTooltipOpen, setInfoTooltipOpen] = useState(false);
   const [popupLoginOpen, setPopupLoginOpen] = useState(false);
   const [popupRegistrationOpen, setPopupRegistrationOpen] = useState(false);
+  const [errorPopupOpen, setErrorPopupOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -65,8 +67,13 @@ function App() {
     setPopupLoginOpen(true);
     setEventListeners();
   };
+  const openPopupError = () => {
+    setErrorPopupOpen(true);
+    setEventListeners();
+  };
   const closeAllPopups = () => {
     setInfoTooltipOpen(false);
+    setErrorPopupOpen(false);
     setPopupLoginOpen(false);
     setPopupRegistrationOpen(false);
     document.removeEventListener('keydown', handleEsc);
@@ -170,8 +177,8 @@ function App() {
       })
       .catch((err) => {
         err.json().then((res) => {
-          console.log(res.message);
           setServerError(res.message);
+          openPopupError();
         });
       });
   };
@@ -185,8 +192,8 @@ function App() {
       })
       .catch((err) => {
         err.json().then((res) => {
-          console.log(res.message);
           setServerError(res.message);
+          openPopupError();
         });
       });
   };
@@ -199,8 +206,8 @@ function App() {
       })
       .catch((err) => {
         err.json().then((res) => {
-          console.log(res.message);
           setServerError(res.message);
+          openPopupError();
         });
       });
   };
@@ -283,6 +290,11 @@ function App() {
           open={infoTooltipOpen}
           onClose={closeAllPopups}
           openPopupLogin={openPopupLogin}
+        />
+        <ErrorPopup
+          open={errorPopupOpen}
+          onClose={closeAllPopups}
+          serverError={serverError}
         />
       </div>
     </CurrentUserContext.Provider>

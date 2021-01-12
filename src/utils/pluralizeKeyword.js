@@ -23,18 +23,5 @@ export default function pluralizeKeywords(
       else pattern = one;
     }
   }
-  //   else {
-  //     // числа от 100 и сколько душе угодно
-  //     const stringNumber = n.toString();
-  //     const newN = +stringNumber.slice(stringNumber.length - 2);
-  //     const newS = Math.floor(newN / radix);
-  //     const newMod = Math.abs(newN) % radix;
-  //     if (newS === 1) pattern = many;
-  //     else if (newS > 1) {
-  //       if (newMod === 0 || newMod > fewMax) pattern = many;
-  //       else if (newMod > 1 && newMod <= fewMax) pattern = few;
-  //       else pattern = one;
-  //     }
-  //   }
   return pattern.replace('{}', n);
 }
