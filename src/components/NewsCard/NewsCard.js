@@ -22,7 +22,7 @@ function NewsCard({
   };
   const cardDelete = () => {
     main
-      ? userCards.some((userCard) => {
+      ? userCards.forEach((userCard) => {
           if (userCard.title === card.title) {
             deleteCard(userCard._id);
           }

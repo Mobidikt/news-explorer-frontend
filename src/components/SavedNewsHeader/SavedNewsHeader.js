@@ -13,6 +13,7 @@ function SavedNewsHeader({ name, userCards }) {
   const keywordsArr = useMemo(() => {
     return countKeyword(userCards);
   }, [userCards]);
+  console.log(keywordsArr);
   return (
     <section className='saved-news-header'>
       <div className='saved-news-header__container'>
@@ -21,15 +22,15 @@ function SavedNewsHeader({ name, userCards }) {
           {ucFirst(name)}
           {pluralizeArticles(userCards.length, pluralizeConfigArticles)}
         </h1>
-        {userCards.length > 0 ? (
+        {keywordsArr.length > 0 ? (
           <p className='saved-news-header__info'>
             По ключевым словам:
-            {userCards.length === 1 ? (
+            {keywordsArr.length === 1 ? (
               <span className='saved-news-header__info_accent'>
                 {' '}
                 {ucFirst(keywordsArr[0].keyword)}
               </span>
-            ) : userCards.length === 2 ? (
+            ) : keywordsArr.length === 2 ? (
               <>
                 <span className='saved-news-header__info_accent'>
                   {' '}

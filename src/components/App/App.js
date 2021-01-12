@@ -114,9 +114,14 @@ function App() {
             setName(res.name);
           })
           .catch((err) => {
-            err.json().then((res) => {
-              console.log(res.message);
-            });
+            err
+              .json()
+              .then((res) => {
+                console.log(res.message);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           });
         closeAllPopups();
       })
@@ -176,10 +181,15 @@ function App() {
         getUserCards();
       })
       .catch((err) => {
-        err.json().then((res) => {
-          setServerError(res.message);
-          openPopupError();
-        });
+        err
+          .json()
+          .then((res) => {
+            setServerError(res.message);
+            openPopupError();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
   };
   const deleteCard = (cardId) => {
@@ -191,10 +201,15 @@ function App() {
         getUserCards();
       })
       .catch((err) => {
-        err.json().then((res) => {
-          setServerError(res.message);
-          openPopupError();
-        });
+        err
+          .json()
+          .then((res) => {
+            setServerError(res.message);
+            openPopupError();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
   };
   const getUserCards = () => {
@@ -205,10 +220,15 @@ function App() {
         setUserCards(res);
       })
       .catch((err) => {
-        err.json().then((res) => {
-          setServerError(res.message);
-          openPopupError();
-        });
+        err
+          .json()
+          .then((res) => {
+            setServerError(res.message);
+            openPopupError();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
   };
   useEffect(() => {
@@ -220,10 +240,15 @@ function App() {
           setUserCards(res);
         })
         .catch((err) => {
-          err.json().then((res) => {
-            console.log(res.message);
-            setServerError(res.message);
-          });
+          err
+            .json()
+            .then((res) => {
+              console.log(res.message);
+              setServerError(res.message);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         });
     }
   }, [isLogin, history]);
