@@ -11,9 +11,15 @@ function FormPopup(props) {
     >
       {props.children}
 
-      <span className='server-error' />
+      <span className='server-error'>{props.serverError}</span>
 
-      <button type='submit' className='popup__button'>
+      <button
+        type='submit'
+        disabled={props.buttonLocked}
+        className={`popup__button ${
+          props.buttonLocked ? 'popup__button_disable' : ''
+        }`}
+      >
         {props.button_text}
       </button>
     </form>

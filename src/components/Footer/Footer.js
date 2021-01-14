@@ -18,7 +18,8 @@ function Footer() {
                   Главная
                 </Link>
                 <a
-                  target='__blank'
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className='footer__link'
                   href='https://praktikum.yandex.ru/'
                 >
@@ -27,14 +28,16 @@ function Footer() {
               </div>
               <div className='footer__social'>
                 <a
-                  target='__blank'
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className='footer__link '
                   href='https://github.com/Mobidikt'
                 >
                   <i className='footer__link_git' />
                 </a>
                 <a
-                  target='__blank'
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className='footer__link'
                   href='https://www.strava.com/athletes/41677348'
                 >

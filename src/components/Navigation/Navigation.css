@@ -40,6 +40,9 @@
   border-color: #1a1b22;
 }
 .nav__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
   padding: 12px 18px;
@@ -72,6 +75,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(../../images/exit.svg);
+}
+.nav__exit_white {
+  background-image: url(../../images/exit_white.svg);
 }
 @media screen and (max-width: 1000px) {
   .nav__item {

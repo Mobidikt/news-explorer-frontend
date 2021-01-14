@@ -1,4 +1,6 @@
 .card {
+  display: flex;
+  flex-direction: column;
   position: relative;
   height: 100%;
   width: 100%;
@@ -10,10 +12,14 @@
 .card__image {
   height: 272px;
   width: 100%;
-  object-fit: cover;
+  object-fit: fill;
   margin-bottom: 14px;
 }
 .card__info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0 24px 16px;
 }
 .card__button {
@@ -34,7 +40,7 @@
 .card-news__button:hover {
   background-image: url(../../images/card/bookmark_hover.svg);
 }
-.card-news__button:active {
+.card-news__button_active {
   background-image: url(../../images/card/bookmark_active.svg);
 }
 .card-saved-news__button {
@@ -57,7 +63,6 @@
   padding: 8px 12px;
   margin: 0;
   background-color: #ffffff;
-  cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
@@ -94,7 +99,9 @@
   line-height: 22px;
   color: #1a1b22;
   margin: 0 0 12px;
-  max-height: 110px;
+  flex-grow: 1;
+  /* max-height: 110px; */
+  max-height: 284px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -157,6 +164,12 @@
   .card__text {
     max-height: 88px;
     -webkit-line-clamp: 4;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .card__source {
+    font-size: 12px;
   }
 }
 @media screen and (max-width: 550px) {

@@ -1,30 +1,67 @@
-import React from 'react';
-import pluralize from '../../utils/pluralize';
+import React, { useMemo } from 'react';
+import {
+  pluralizeConfigArticles,
+  pluralizeConfigKeyword,
+} from '../../utils/config';
+import { countKeyword } from '../../utils/countKeywords';
+import pluralizeArticles from '../../utils/pluralizeArticle';
+import pluralizeKeywords from '../../utils/pluralizeKeyword';
+import { ucFirst } from '../../utils/ucFirst';
 import './SavedNewsHeader.css';
 
-function SavedNewsHeader({ name }) {
-  const config = {
-    zero: ', у вас нет сохраненных статей',
-    one: ', у вас {} сохраненная статья',
-    few: ', у вас {} сохраненные статьи',
-    many: ', у вас {} сохраненных статей',
-    radix: 10,
-    fewMax: 4,
-  };
+function SavedNewsHeader({ name, userCards }) {
+  const keywordsArr = useMemo(() => {
+    return countKeyword(userCards);
+  }, [userCards]);
   return (
     <section className='saved-news-header'>
       <div className='saved-news-header__container'>
         <p className='saved-news-header__name'>Сохраненные статьи</p>
         <h1 className='saved-news-header__title'>
-          {name}
-          {pluralize(5, config)}
+          {ucFirst(name)}
+          {pluralizeArticles(userCards.length, pluralizeConfigArticles)}
         </h1>
-        <p className='saved-news-header__info'>
-          По ключевым словам:
-          <span className='saved-news-header__info_accent'> Тайга,</span>
-          <span className='saved-news-header__info_accent'> Природа</span> и
-          <span className='saved-news-header__info_accent'> 2-м другим</span>
-        </p>
+        {keywordsArr.length > 0 ? (
+          <p className='saved-news-header__info'>
+            По ключевым словам:
+            {keywordsArr.length === 1 ? (
+              <span className='saved-news-header__info_accent'>
+                {' '}
+                {ucFirst(keywordsArr[0].keyword)}
+              </span>
+            ) : keywordsArr.length === 2 ? (
+              <>
+                <span className='saved-news-header__info_accent'>
+                  {' '}
+                  {ucFirst(keywordsArr[0].keyword)}
+                </span>{' '}
+                и{' '}
+                <span className='saved-news-header__info_accent'>
+                  {ucFirst(keywordsArr[1].keyword)}
+                </span>
+              </>
+            ) : (
+              <>
+                <span className='saved-news-header__info_accent'>
+                  {' '}
+                  {ucFirst(keywordsArr[0].keyword)} ,{' '}
+                  {ucFirst(keywordsArr[1].keyword)}
+                </span>{' '}
+                и{' '}
+                <span className='saved-news-header__info_accent'>
+                  {pluralizeKeywords(
+                    keywordsArr.length - 2,
+                    pluralizeConfigKeyword,
+                  )}
+                </span>
+              </>
+            )}
+          </p>
+        ) : (
+          <p className='saved-news-header__info'>
+            Вы не сохранили ещё ни одной статьи
+          </p>
+        )}
       </div>
     </section>
   );

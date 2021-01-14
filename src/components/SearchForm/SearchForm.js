@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './SearchForm.css';
 
-function SearchForm(props) {
+function SearchForm({ searchArticle }) {
+  const [search, setSearch] = useState('');
+  const [searchError, setSearchError] = useState('');
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+  useEffect(
+    function validateSearch() {
+      if (search.length > 0) setSearchError('');
+    },
+    [search],
+  );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (search.length === 0) {
+      setSearchError('search-form__error_open');
+    } else {
+      searchArticle(search);
+      setSearch('');
+    }
+  };
   return (
     <section className='search-form'>
       <div className='search-form__container'>
@@ -19,13 +39,19 @@ function SearchForm(props) {
             type='text'
             className='search-form__input'
             placeholder='Введите тему новости'
+            value={search}
+            onChange={handleSearchChange}
             required
           />
-          <button className='search-form__button' type='submit'>
+          <button
+            className='search-form__button'
+            type='submit'
+            onClick={handleSubmit}
+          >
             Искать
           </button>
         </form>
-        <span className={`search-form__error `}>
+        <span className={`search-form__error ${searchError}`}>
           Нужно ввести ключевое слово
         </span>
       </div>

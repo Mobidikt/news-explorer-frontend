@@ -5,8 +5,7 @@ import { ROUTES_MAP } from '../../utils/routesMap';
 import Navigation from '../Navigation/Navigation.js';
 import './Header.css';
 
-const user = false;
-function Header({ location, openPopupLogin }) {
+function Header({ isLogin, location, openPopupLogin, name, exit }) {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   const mainLocation = location === ROUTES_MAP.MAIN;
@@ -52,9 +51,11 @@ function Header({ location, openPopupLogin }) {
             </a>
             <div className='header__menu'>
               <Navigation
-                user={user}
+                user={name}
+                isLogin={isLogin}
                 mainLocation={mainLocation}
                 openPopupLogin={openPopupLogin}
+                exit={exit}
               />
             </div>
             <button className='header__button_menu-mobile' onClick={showMenu}>
@@ -67,10 +68,12 @@ function Header({ location, openPopupLogin }) {
           </div>
         </header>
         <MobileMenu
-          user={user}
+          isLogin={isLogin}
+          name={name}
           isOpen={openMobileMenu}
           mainLocation={mainLocation}
           openPopup={openPopup}
+          exit={exit}
         />
       </Route>
     </Switch>
